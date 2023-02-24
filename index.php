@@ -5,7 +5,7 @@
 		$uri = 'http://';
 	}
 	$uri .= $_SERVER['HTTP_HOST'];
-	header('Location: '.$uri.'/Slutuppgift-PHP-Hafiz/app/');
+	header('Location: '.$uri.'/slutuppgift-php-hafiz/app/');
 	exit;
 ?>
 

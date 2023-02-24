@@ -1,7 +1,7 @@
 <?php
 
 # config
-define('BASE_URL', 'http://localhost/Slutuppgift-PHP-Hafiz');
+define('BASE_URL', 'http://localhost/slutuppgift-php-hafiz');
 
 
 # Helper functions --------------------------------------

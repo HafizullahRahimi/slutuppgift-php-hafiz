@@ -67,7 +67,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Header Start -->
     <header>
         <div class="Header-top col-8 mx-auto">
-            <h1 class="my-4 w-50 mx-auto ">Sinus web shop</h1>
+            <!-- <div class="my-4 w-auto mx-auto "> -->
+            <div class="my-4 w-100 text-center ">
+                <a class="" href="<?= asset('index.php') ?>">
+                    <img src=" <?= asset('assets/images/logo.png'); ?>" alt="" width="210" height="70" class=" " />
+                </a>
+            </div>
             <div class="d-flex align-items-center mb-5 <?php if (!isset($_SESSION["userName"])) echo 'd-none'; ?>">
                 <!-- Search Form -->
                 <form class="w-100 me-3 d-flex" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -85,10 +90,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <main>
         <div class=" container">
             <br>
-            
+            <!-- dropdown -->
+            <div class="dropdown">
+                <a class="btn  btn-outline-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown link
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item active" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
+
             <h1></h1>
             <section class="d-flex flex-wrap flex-row w-100 mx-auto">
-                
+
                 <section class=" col-lg-3 col-md-4 col-sm-6 "></section>
             </section>
         </div>

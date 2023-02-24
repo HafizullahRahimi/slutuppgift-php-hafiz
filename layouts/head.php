@@ -31,7 +31,7 @@ $current_page_name = basename($_SERVER['PHP_SELF'], 'php');
     <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
     <script src=" <?= asset('assets/js/sweetalert2.all.js') ?>"></script>
 
-    <link rel="icon" href="<?= asset('assets/images/parking.png') ?>" />
+    <link rel="icon" href="<?= asset('assets/images/favicon.png') ?>" />
     
 
 <!-- head -->

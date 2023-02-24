@@ -19,11 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 ?>
 
 <!-- Navbar Start -->
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-md " style="background-color: #b5c0c9;">
     <div class="container">
         <!-- LOGO -->
         <a class="navbar-brand" href="<?= asset('index.php') ?>">
-            <img src=" <?= asset('assets/images/house.png'); ?>" alt="" width="34" height="34" class=" " />
+            <img src=" <?= asset('assets/images/logo.png'); ?>" alt="" width="110" height="40" class=" " />
         </a>
         <!-- Menu BTN -->
         <button class="navbar-toggler ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,12 +79,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         </div>
         <!-- Login and Sign up -->
         <div class="col-md-3 text-end ms-auto <?php if (isset($_SESSION["userName"])) echo 'd-none' ?>">
-            <a class="btn btn-primary  me-2 <?php if ($current_page_name == 'login') echo 'active'; ?>" href="<?= asset('/auth/login.php') ?>">
-                Login
-            </a>
-            <a class="btn btn-outline-primary <?php if ($current_page_name == 'singup') echo 'active'; ?>" href="<?= asset('/auth/register.php') ?>">
-                Sign up
-            </a>
+            
+        <a class="btn btn-outline-primary me-2 <?php if ($current_page_name == 'login') echo 'active'; ?>" href="<?= asset('/auth/login.php') ?>">
+            Login
+        </a>
+        <a class="btn  position-relative " href="<?= asset('/auth/register.php') ?>">
+            <!-- <i class="fa-solid fa-cart-shopping text-primary fs-3"></i> -->
+            <i class="fa-solid fa-cart-shopping  text-primary-emphasis fs-3"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill  bg-primary d-none">
+                99
+            </span>
+        </a>
         </div>
     </div>
 </nav>
