@@ -1,7 +1,7 @@
 <?php
 
 # config
-define('BASE_URL', 'http://localhost/php-project');
+define('BASE_URL', 'http://localhost/Slutuppgift-PHP-Hafiz');
 
 
 # Helper functions --------------------------------------
@@ -37,37 +37,15 @@ function dd($var)
 {
     echo '<pre>';
     var_dump($var);
-    exit;
+    echo '</pre>';
+    // exit;
 }
 // $users = ['Ali', 'Hassan', 'Wille', 'Sara'];
 // dd($users);
 
 
-// PHP function to read CSV to array
-function csvToArray($csv)
-{
-    // create file handle to read CSV file
-    $csvToRead = fopen($csv, 'r');
-
-    // read CSV file using comma as delimiter
-    while (!feof($csvToRead)) {
-        $csvArray[] = fgetcsv($csvToRead, 1000, ';');
-    }
-
-    fclose($csvToRead);
-    return $csvArray;
-}
-
-// CSV file to read into an Array
-// $csvFile = 'testcsv.csv';
-$csvFile = asset('/files/users.csv');
-// $csvFile = './server/users.csv';
-$csvArray = csvToArray($csvFile);
-$arrLength = count($csvArray);
-
-
 //Test input
-function test_input($data)
+function testInput($data)
 {
     $data = trim($data);
     $data = stripslashes($data);
