@@ -1,4 +1,4 @@
-# **Sinus-Webshop**
+# **Sinus web shop**
 
 ## **Version: 1.0.0**
 

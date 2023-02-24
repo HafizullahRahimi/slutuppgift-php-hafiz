@@ -5,9 +5,6 @@ require_once 'Connection.php';
 
 class User extends Connection
 {
-    // DB properties
-
-
 
     // User properties
     public $userID;
