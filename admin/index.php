@@ -1,4 +1,3 @@
-
 <?php
 //require Files
 require_once '../functions/helpers.php';
@@ -21,7 +20,6 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_POST["regNum"])) {
-
     }
 }
 
@@ -47,28 +45,70 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- Header Start -->
     <header>
-        <div class="Header-top col-8 mx-auto">
-            <h1 class="my-4 w-50 mx-auto ">Admin Panel</h1>
-            <div class="d-flex align-items-center mb-5 <?php if (!isset($_SESSION["userName"])) echo 'd-none'; ?>">
-                <!-- Search Form -->
-                <form class="w-100 me-3 d-flex" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                    <input name="regNum" type="text" class="form-control" placeholder="Reg number" aria-label="Search">
-                    <button type="submit" class="me-4 ms-2 btn btn-success ">Find</button>
-                </form>
-            </div>
-        </div>
         <!-- Navbar -->
         <?php require_once './layouts/navbar.php' ?>
+        <br>
     </header>
     <!-- Header End -->
 
-    <!-- Main Start -->
-    <main>
-        <div class=" container">
-            
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar Start -->
+            <?php require_once './layouts/sidebar.php'; ?>
+            <!-- Sidebar End -->
+            <!-- Main Start -->
+            <main role="main" class="col-9 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Dash board</h1>
+                </div>
+
+                <h3>Products</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th> <button class="btn fw-bold">#</button> </th>
+                                <th><button class="btn fw-bold">Title</button> </th>
+                                <th><button class="btn fw-bold">Name</button> </th>
+                                <th><button class="btn fw-bold">Settings</button> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td > <button class="btn"><?php echo 'id' ?> </button></td>
+                                <td > <button class="btn"> <?php echo 'title'?> </button></td>
+                                <td > <button class="btn"> <?php echo 'name' ?> </button></td>
+                                <td>
+                                    <a href="" class="btn btn btn-outline-info">Edit</a>
+                                    <a href="" class="btn btn btn-outline-danger">Delete</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <?php echo 'id' ?> </td>
+                                <td> <?php echo 'title' ?> </td>
+                                <td> <?php echo 'name' ?> </td>
+
+                                <td>
+                                    <a href="" class="btn btn-sm btn-outline-info">Edit</a>
+                                    <a href="" class="btn btn-sm btn-outline-danger">Delete</a>
+                                </td>
+                            </tr>
+
+
+
+                            <div class="alert alert-danger" role="alert">
+                               
+                            </div>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+            <!-- Main End -->
         </div>
-    </main>
-    <!-- Main End -->
+    </div>
 
 
 
