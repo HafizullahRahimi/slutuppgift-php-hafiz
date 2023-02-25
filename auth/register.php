@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["img"])) $img = 'user.png';
     
     // User Class
-    $u = new User(SERVERNAME, USERNAME, PASSWORD, DBNAME);
+    $u = new User();
     // register new User
     $u->register($firstName, $lastName, $email, $password, $gender, $img);
 }

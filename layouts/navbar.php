@@ -1,4 +1,6 @@
 <?php
+require_once '../database/Category.php';
+
 //The Current Page Filename
 $current_page_name = basename($_SERVER['PHP_SELF'], '.php');
 // echo $current_page_name; // return: index
@@ -7,7 +9,13 @@ $current_page_name = basename($_SERVER['PHP_SELF'], '.php');
 //START SESSION
 // session_start();
 
+//-----------------------------------------------------------
+// Categories
+$categories = Category::getCategory();
 
+
+//-----------------------------------------------------------
+//logout
 $logoutAlert = false;
 
 // REQUEST_METHOD GET
@@ -15,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (empty($_GET['logoutAlert'])) $logoutAlert = false;
     else  $logoutAlert = true;
 }
+//-----------------------------------------------------------
 
 ?>
 
@@ -25,10 +34,25 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         <a class="navbar-brand" href="<?= asset('index.php') ?>">
             <img src=" <?= asset('assets/images/logo.png'); ?>" alt="" width="110" height="40" class=" " />
         </a>
-        <!-- Menu BTN -->
-        <button class="navbar-toggler ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <!-- dropdown -->
+        <div class="dropdown">
+            <a class="btn  btn-outline-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                products
+            </a>
+            <ul class="dropdown-menu">
+                <?php
+                foreach ($categories as $category) { ?>
+
+                    <li>
+                        <a class="dropdown-item <?php echo (isset($_GET['category']) && $category["categorie_id"] == $_GET['category'] ? 'active' : ''); ?>" href="<?= 'index.php?category=' . $category["categorie_id"] ?>">
+                            <?= $category["name"] ?>
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
+            </ul>
+        </div>
         <!-- Search and User Menu-->
         <div>
             <div class="d-flex align-items-center <?php if (!isset($_SESSION["userName"])) echo 'd-none' ?>">
@@ -79,17 +103,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         </div>
         <!-- Login and Sign up -->
         <div class="col-md-3 text-end ms-auto <?php if (isset($_SESSION["userName"])) echo 'd-none' ?>">
-            
-        <a class="btn btn-outline-primary me-2 <?php if ($current_page_name == 'login') echo 'active'; ?>" href="<?= asset('/auth/login.php') ?>">
-            Login
-        </a>
-        <a class="btn  position-relative " href="<?= asset('/auth/register.php') ?>">
-            <!-- <i class="fa-solid fa-cart-shopping text-primary fs-3"></i> -->
-            <i class="fa-solid fa-cart-shopping  text-primary-emphasis fs-3"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill  bg-primary d-none">
-                99
-            </span>
-        </a>
+
+            <a class="btn btn-outline-primary me-2 <?php if ($current_page_name == 'login') echo 'active'; ?>" href="<?= asset('/auth/login.php') ?>">
+                Login
+            </a>
+            <a class="btn  position-relative " href="<?= asset('/auth/register.php') ?>">
+                <!-- <i class="fa-solid fa-cart-shopping text-primary fs-3"></i> -->
+                <i class="fa-solid fa-cart-shopping  text-primary-emphasis fs-3"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill  bg-primary d-none">
+                    99
+                </span>
+            </a>
         </div>
     </div>
 </nav>

@@ -1,5 +1,4 @@
 <?php
-require_once 'config.php';
 require_once '../functions/helpers.php';
 require_once 'Connection.php';
 
@@ -11,13 +10,13 @@ class User extends Connection
 
 
     // Constructor
-    function __construct($servername, $username, $password, $dbname)
-    {
-        $this->servername = $servername;
-        $this->username = $username;
-        $this->password = $password;
-        $this->dbname = $dbname;
-    }
+    // function __construct($servername, $username, $password, $dbname)
+    // {
+    //     $this->servername = $servername;
+    //     $this->username = $username;
+    //     $this->password = $password;
+    //     $this->dbname = $dbname;
+    // }
 
     // Setter ---------------------------------------------
     public function setUserId($email)

@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // echo '<br>';
     // echo $password;
 
-    $u = new User(SERVERNAME, USERNAME, PASSWORD, DBNAME);
+    $u = new User();
     // User Class
     $loginStatus =  $u->login($email, $password);
     if (!$loginStatus) {

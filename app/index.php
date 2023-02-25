@@ -3,6 +3,7 @@
 require_once '../functions/helpers.php';
 
 
+
 //The Current Page Filename
 $current_page_name = basename($_SERVER['PHP_SELF'], 'php');
 
@@ -14,36 +15,33 @@ $format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
 session_start();
 
 
+$text = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium, vel id, qui nostrum eos distinctio sit harum a velit aliquam officia. Magni laudantium tenetur, a fugiat praesentium consequuntur modi, dolorum voluptates quia ipsam tempore aut! Soluta ex facere quasi fuga magnam officiis libero rem. Dolores expedita distinctio nesciunt vel eius?';
+// echo substr($text , 0, 30) . "..." ;
+
+
 
 //-----------------------------------------------------------
-// REQUEST_METHOD POST For Find regNum
-$findRegNum = false;
+// REQUEST_METHOD POST For search
+
 $showAlert = false;
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!empty($_POST["regNum"])) {
-        $regNum = $_POST["regNum"];
+    if (!empty($_POST["search"])) {
+        $search = $_POST["search"];
         $showAlert = true;
-
-        // regNum Arr
-        $regNumArr = $p->getRegnumInfo($regNum);
-
-        // Found regNum
-        if (!empty($regNumArr)) {
-            $findRegNum = true;
-            $fullNameF = $regNumArr['first_name'] . ' ' . $regNumArr['last_name'];
-            $emailF = $regNumArr['email'];
-            $vehicleTypeF;
-            if ($regNumArr["vehicle_type"] == 1) $vehicleTypeF = 'Car';
-            else  $vehicleTypeF = 'MC';
-            $arrivalF = $regNumArr["arrival_date"];
-            $placeF = $regNumArr["place"];
-            $partF = $regNumArr["part"];
-        }
     }
 }
 
+//-----------------------------------------------------------
+// REQUEST_METHOD Get For Category
+if (isset($_GET['category'])) {
+    $categoryId = $_GET['category'];
 
+    // $products = $db->prepare('SELECT * FROM products WHERE category_id = :id');
+    // $products->execute(['id' => $categoryId]);
+} else {
+    // $queryProducts = "SELECT * FROM products";
+    // $products = $db->query($queryProducts);
+}
 
 
 ?>
@@ -66,17 +64,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Header Start -->
     <header>
         <div class="Header-top col-8 mx-auto">
-            <!-- <div class="my-4 w-auto mx-auto "> -->
+            <!-- Logo TOP -->
             <div class="my-4 w-100 text-center ">
                 <a class="" href="<?= asset('index.php') ?>">
                     <img src=" <?= asset('assets/images/logo.png'); ?>" alt="" width="210" height="70" class=" " />
                 </a>
             </div>
-            <div class="d-flex align-items-center mb-5 <?php if (!isset($_SESSION["userName"])) echo 'd-none'; ?>">
-                <!-- Search Form -->
+            <!-- Search Form -->
+            <div class="d-flex align-items-center mb-5">
                 <form class="w-100 me-3 d-flex" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                    <input name="regNum" type="text" class="form-control" placeholder="Reg number" aria-label="Search">
-                    <button type="submit" class="me-4 ms-2 btn btn-success ">Find</button>
+                    <input name="search" type="text" class="form-control" placeholder="Search" aria-label="Search">
+                    <button type="submit" class="me-4 ms-2 btn  btn-primary ">Search</button>
                 </form>
             </div>
         </div>
@@ -89,18 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <main>
         <div class=" container">
             <br>
-            <!-- dropdown -->
-            <div class="dropdown">
-                <a class="btn  btn-outline-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown link
-                </a>
 
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item active" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
 
             <h1></h1>
             <section class="d-flex flex-wrap flex-row w-100 mx-auto">
@@ -114,9 +101,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- SweetAlert -->
     <script>
-        function regNumFound() {
+        function searchFound() {
             Swal.fire({
-                title: '<h2 class="fs-4"><?= $regNum ?></h2>',
+                title: '<h2 class="fs-4"><?= $search ?></h2>',
                 icon: 'success',
                 html: '<div class="modal-body text-start col-8 mx-auto">' +
                     '<hr>' +
@@ -137,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     </script>
     <script>
-        function regNumNotFound() {
+        function searchNotFound() {
             Swal.fire({
                 icon: 'error',
                 title: '<h2 class="fs-3"> Oops...</h2>',
@@ -150,8 +137,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </script>
 
     <?php
-    if ($showAlert && !$findRegNum) echo '<script>regNumNotFound()</script>';
-    if ($showAlert && $findRegNum) echo '<script>regNumFound()</script>';
+    if ($showAlert && !$findsearch) echo '<script>searchNotFound()</script>';
+    if ($showAlert && $findsearch) echo '<script>searchFound()</script>';
     ?>
 
 
