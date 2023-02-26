@@ -1,4 +1,3 @@
-
 <?php
 
 
@@ -29,13 +28,13 @@ $format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
     <div class="sidebar-sticky">
         <ul class="nav nav-pills flex-column">
             <li class="nav-item">
-                <a class="nav-link <?=($current_page_name == 'index' ? 'active' : '') ?> " href="<?= asset('admin/index.php')?>">
+                <a class="nav-link <?= ($current_page_name == 'index' ? 'active' : '') ?> " href="<?= asset('admin/index.php') ?>">
                     <i class="fas fa-home"></i>
                     Dash board
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?=($current_page_name == 'product' ? 'active' : '') ?>" href="<?= asset('admin/product/product.php')?>">
+                <a class="nav-link <?= ($current_page_name == 'product' ? 'active' : '') ?>" href="<?= asset('admin/product/product.php') ?>">
                     Products
                 </a>
             </li>
@@ -45,7 +44,7 @@ $format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= asset('admin/order/order.php')?>">
+                <a class="nav-link" href="<?= asset('admin/order/order.php') ?>">
                     Orders
                 </a>
             </li>
@@ -61,7 +60,12 @@ $format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
             </li>
 
         </ul>
-
     </div>
 </nav>
 <!-- Sidebar End -->
+
+
+
+
+
+<!-- --------------------------------------------------------------- -->

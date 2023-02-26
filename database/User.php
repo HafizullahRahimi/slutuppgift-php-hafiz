@@ -9,14 +9,7 @@ class User extends Connection
     public $userID;
 
 
-    // Constructor
-    // function __construct($servername, $username, $password, $dbname)
-    // {
-    //     $this->servername = $servername;
-    //     $this->username = $username;
-    //     $this->password = $password;
-    //     $this->dbname = $dbname;
-    // }
+
 
     // Setter ---------------------------------------------
     public function setUserId($email)

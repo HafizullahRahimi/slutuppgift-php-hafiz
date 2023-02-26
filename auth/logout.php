@@ -13,5 +13,5 @@ if (isset($_POST["logout"])) {
 
 // (C) REDIRECT TO LOGIN PAGE IF NOT SIGNED IN
 if (!isset($_SESSION["userName"])) {
-    redirect('index.php');
+    redirect('app/index.php');
 }

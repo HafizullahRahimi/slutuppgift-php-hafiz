@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <!-- Head  -->
     <?php require_once '../layouts/head.php' ?>
-    <title>Admin</title>
+    <title>Dash board</title>
 </head>
 
 <body onload="">
@@ -188,11 +188,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
 
-
+    <!-- Toast HTML-->
+    <div class="toast-container p-1 bottom-0 start-0" id="toastPlacement">
+        <div class="toast col-3 " id="toast1">
+            <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="...">
+                <strong class="me-auto">Bootstrap</strong>
+                <small>11 mins ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+    </div>
 
 
     <!-- script src -->
     <?php require_once '../layouts/script-src.php' ?>
+
+    <!-- Toast JS-->
+    <script>
+        const toast1 = document.getElementById('toast1');
+        const toastBTS1 = new bootstrap.Toast(toast1);
+        toastBTS1.show();
+    </script>
 </body>
 
 </html>

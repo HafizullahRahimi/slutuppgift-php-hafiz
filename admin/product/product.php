@@ -21,7 +21,7 @@ session_start();
 <head>
     <!-- Head  -->
     <?php require_once '../../layouts/head.php' ?>
-    <title>Admin</title>
+    <title>Product</title>
 </head>
 
 <body onload="">
@@ -43,7 +43,9 @@ session_start();
             <main role="main" class="col-9 px-4">
                 <div class="d-flex justify-content-between mt-5">
                     <h3>Products</h3>
-                    <a href="<?= asset('admin/product/new-product.php')?>" class="btn btn-outline-primary"> New Product</a>
+                    <a href="<?= asset('admin/product/new-product.php') ?>" class="btn btn-outline-success">
+                        <i class="fa-solid fa-plus me-2"></i>New Product
+                    </a>
                 </div>
                 <br>
                 <!-- Products Table -->
@@ -64,8 +66,8 @@ session_start();
                                 <td> <?php echo 'title' ?> </td>
                                 <td> <?php echo 'name' ?> </td>
                                 <td>
-                                    <a href="<?= asset('admin/product/edit-product.php').'?id=11'?>" class="btn btn btn-primary btn-sm">Edit</a>
-                                    <a href="<?= asset('admin/product/delete-product.php').'?id=11'?>" class="btn btn btn-outline-danger btn-sm">Delete</a>
+                                    <a href="<?= asset('admin/product/edit-product.php') . '?id=11' ?>" class="btn btn btn-primary btn-sm">Edit</a>
+                                    <a href="<?= asset('admin/product/delete-product.php') . '?id=11' ?>" class="btn btn btn-outline-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
                             <tr>
@@ -82,7 +84,6 @@ session_start();
                             <!-- Not Found product -->
                             <!-- <div class="alert alert-danger" role="alert"></div> -->
 
-
                         </tbody>
                     </table>
                 </div>
@@ -94,10 +95,36 @@ session_start();
 
 
 
+    <!-- Toast HTML: The product created-->
+    <div class="toast-container  p-2 bottom-0 start-0" id="toastPlacement">
+        <div class="toast text-bg-success " id="productCreated" data-bs-delay="2000">
+            <div class="toast-header">
+                <!-- <img src="..." class="rounded me-2" alt="..."> -->
+                <i class="fa-solid fa-square-plus me-1"></i>
+                <strong class="me-auto">New product</strong>
+                <small>just now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                The product created.
+            </div>
+        </div>
+    </div>
 
 
     <!-- script src -->
     <?php require_once '../../layouts/script-src.php' ?>
+
+    <!-- Toast JS-->
+    <script>
+        const productCreated = document.getElementById('productCreated');
+    </script>
+
+    <?php
+    if (isset($_GET['created'])) echo '<script>new bootstrap.Toast(productCreated).show();</script>';
+
+    ?>
+
 </body>
 
 </html>
