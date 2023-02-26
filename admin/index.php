@@ -14,16 +14,16 @@ $format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
 //START SESSION
 session_start();
 
+//-----------------------------------------------------------
+// REQUEST_METHOD GET
+
 
 //-----------------------------------------------------------
 // REQUEST_METHOD POST 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_POST["regNum"])) {
     }
 }
-
-
 
 
 ?>
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-<!-- Prague parking HTML-->
+<!-- Admin HTML-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,27 +61,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Dash board</h1>
                 </div>
-
+                <!-- Products Table -->
                 <h3>Products</h3>
                 <div class="table-responsive">
                     <table class="table table-striped table-sm">
                         <thead>
                             <tr>
-                                <th> <button class="btn fw-bold">#</button> </th>
-                                <th><button class="btn fw-bold">Title</button> </th>
-                                <th><button class="btn fw-bold">Name</button> </th>
-                                <th><button class="btn fw-bold">Settings</button> </th>
+                                <th> # </th>
+                                <th>Title </th>
+                                <th>Name </th>
+                                <th>Settings </th>
                             </tr>
                         </thead>
                         <tbody>
 
                             <tr>
-                                <td > <button class="btn"><?php echo 'id' ?> </button></td>
-                                <td > <button class="btn"> <?php echo 'title'?> </button></td>
-                                <td > <button class="btn"> <?php echo 'name' ?> </button></td>
+                                <td> <?php echo 'id' ?> </td>
+                                <td> <?php echo 'title' ?> </td>
+                                <td> <?php echo 'name' ?> </td>
                                 <td>
-                                    <a href="" class="btn btn btn-outline-info">Edit</a>
-                                    <a href="" class="btn btn btn-outline-danger">Delete</a>
+                                    <a href="" class="btn btn btn-primary btn-sm">Edit</a>
+                                    <a href="" class="btn btn btn-outline-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
                             <tr>
@@ -90,16 +90,93 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td> <?php echo 'name' ?> </td>
 
                                 <td>
-                                    <a href="" class="btn btn-sm btn-outline-info">Edit</a>
+                                    <a href="" class="btn btn-sm  btn-primary">Edit</a>
+                                    <a href="" class="btn btn-sm btn-outline-danger">Delete</a>
+                                </td>
+                            </tr>
+
+                            <!-- Not Found product -->
+                            <!-- <div class="alert alert-danger" role="alert"></div> -->
+
+
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <!-- Categories Table -->
+                <h3>Categories</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th> Id </th>
+                                <th>Name </th>
+                                <th>Settings </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> <?php echo 'id' ?> </td>
+                                <td> <?php echo 'name' ?> </td>
+                                <td>
+                                    <a href="" class="btn btn btn-primary btn-sm">Edit</a>
+                                    <a href="" class="btn btn btn-outline-danger btn-sm">Delete</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <?php echo 'id' ?> </td>
+                                <td> <?php echo 'name' ?> </td>
+
+                                <td>
+                                    <a href="" class="btn btn-sm  btn-primary">Edit</a>
                                     <a href="" class="btn btn-sm btn-outline-danger">Delete</a>
                                 </td>
                             </tr>
 
 
+                            <!-- Not Found Category -->
+                            <!-- <div class="alert alert-danger" role="alert"></div> -->
 
-                            <div class="alert alert-danger" role="alert">
-                               
-                            </div>
+
+
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <!-- Orders Table -->
+                <h3>Orders</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th> Id </th>
+                                <th>Name </th>
+                                <th>Settings </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> <?php echo 'id' ?> </td>
+                                <td> <?php echo 'name' ?> </td>
+                                <td>
+                                    <a href="" class="btn btn btn-primary btn-sm">Edit</a>
+                                    <a href="" class="btn btn btn-outline-danger btn-sm">Delete</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <?php echo 'id' ?> </td>
+                                <td> <?php echo 'name' ?> </td>
+
+                                <td>
+                                    <a href="" class="btn btn-sm  btn-primary">Edit</a>
+                                    <a href="" class="btn btn-sm btn-outline-danger">Delete</a>
+                                </td>
+                            </tr>
+
+
+                            <!-- Not Found Order -->
+                            <!-- <div class="alert alert-danger" role="alert"></div> -->
+
 
 
                         </tbody>

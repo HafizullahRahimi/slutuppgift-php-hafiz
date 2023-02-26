@@ -49,7 +49,7 @@ if (isset($_GET['category'])) {
 
 
 
-<!-- Prague parking HTML-->
+<!-- Home HTML-->
 <!DOCTYPE html>
 <html lang="en">
 
