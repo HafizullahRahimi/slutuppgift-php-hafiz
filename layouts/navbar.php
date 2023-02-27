@@ -1,5 +1,4 @@
 <?php
-require_once '../database/Category.php';
 
 //The Current Page Filename
 $current_page_name = basename($_SERVER['PHP_SELF'], '.php');
@@ -8,10 +7,6 @@ $current_page_name = basename($_SERVER['PHP_SELF'], '.php');
 
 //START SESSION
 // session_start();
-
-//-----------------------------------------------------------
-// Categories
-$categories = Category::getCategory();
 
 
 //-----------------------------------------------------------
@@ -34,25 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         <a class="navbar-brand" href="<?= asset('index.php') ?>">
             <img src=" <?= asset('assets/images/logo.png'); ?>" alt="" width="110" height="40" class=" " />
         </a>
-        <!-- dropdown -->
-        <div class="dropdown">
-            <a class="btn  btn-outline-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                products
-            </a>
-            <ul class="dropdown-menu">
-                <?php
-                foreach ($categories as $category) { ?>
-
-                    <li>
-                        <a class="dropdown-item <?php echo (isset($_GET['category']) && $category["categorie_id"] == $_GET['category'] ? 'active' : ''); ?>" href="<?= 'index.php?category=' . $category["categorie_id"] ?>">
-                            <?= $category["name"] ?>
-                        </a>
-                    </li>
-                <?php
-                }
-                ?>
-            </ul>
-        </div>
         <!-- Search and User Menu-->
         <div>
             <div class="d-flex align-items-center <?php if (!isset($_SESSION["userName"])) echo 'd-none' ?>">

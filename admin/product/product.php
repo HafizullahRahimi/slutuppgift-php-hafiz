@@ -54,7 +54,7 @@ $products = Product::getAllProducts();
             <?php require_once '../layouts/sidebar.php'; ?>
             <!-- Sidebar End -->
             <!-- Main Start -->
-            <main role="main" class="col-9 px-4">
+            <main role="main" class="col-10 px-4">
                 <div class="d-flex justify-content-between mt-5">
                     <h3></h3>
                     <a href="<?= asset('admin/product/new-product.php') ?>" class="btn btn-outline-success">
@@ -92,8 +92,11 @@ $products = Product::getAllProducts();
                                         <td><?= $product["created_at"] ?></td> 
                                         <td><?= $product["updated_at"] ?></td> 
                                         <td>
-                                            <a href="<?= asset('admin/product/status-product.php?status=1&id=') . $product["product_id"] ?>" class="btn btn btn-sm <?= ($product["status"] == 1) ? 'btn-primary disabled' : 'btn-outline-primary' ?> "  >Enable</a>
-                                            <a href="<?= asset('admin/product/status-product.php?status=0&id=') . $product["product_id"] ?>" class="btn btn btn-sm <?= ($product["status"] == 1) ? 'btn-outline-danger' : 'btn-danger disabled' ?>">Disable</a>
+                                            <div class="row me-1 " style="width: 200px;">
+
+                                                <a href="<?= asset('admin/product/status-product.php?status=1&id=') . $product["product_id"] ?>" class="col-5 text-center me-1 btn btn btn-sm <?= ($product["status"] == 1) ? 'btn-primary disabled' : 'btn-outline-primary' ?> "  >Enable</a>
+                                                <a href="<?= asset('admin/product/status-product.php?status=0&id=') . $product["product_id"] ?>" class="col-5 btn btn btn-sm <?= ($product["status"] == 1) ? 'btn-outline-danger' : 'btn-danger disabled' ?>">Disable</a>
+                                            </div>
                                         </td> 
                                         <td>
                                             <a href="<?= asset('admin/product/edit-product.php?id=') . $product["product_id"]  ?>" class="btn btn btn-success btn-sm">Edit</a>

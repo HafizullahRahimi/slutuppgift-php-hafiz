@@ -24,7 +24,7 @@ $format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
 
 
 <!-- Sidebar Start -->
-<nav class="col-md-3 d-none d-md-block bg-light sidebar">
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
     <div class="sidebar-sticky">
         <ul class="nav nav-pills flex-column">
             <li class="nav-item">

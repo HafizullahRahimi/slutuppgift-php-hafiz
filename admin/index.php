@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php require_once './layouts/sidebar.php'; ?>
             <!-- Sidebar End -->
             <!-- Main Start -->
-            <main role="main" class="col-9 px-4">
+            <main role="main" class="col-10 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Dash board</h1>
                 </div>
@@ -211,7 +211,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script>
         const toast1 = document.getElementById('toast1');
         const toastBTS1 = new bootstrap.Toast(toast1);
-        toastBTS1.show();
+        // toastBTS1.show();
     </script>
 </body>
 

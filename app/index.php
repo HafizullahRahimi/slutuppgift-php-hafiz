@@ -1,6 +1,7 @@
 <?php
 //require Files
 require_once '../functions/helpers.php';
+require_once '../database/Category.php';
 
 
 
@@ -18,7 +19,9 @@ session_start();
 $text = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium, vel id, qui nostrum eos distinctio sit harum a velit aliquam officia. Magni laudantium tenetur, a fugiat praesentium consequuntur modi, dolorum voluptates quia ipsam tempore aut! Soluta ex facere quasi fuga magnam officiis libero rem. Dolores expedita distinctio nesciunt vel eius?';
 // echo substr($text , 0, 30) . "..." ;
 
-
+//-----------------------------------------------------------
+// Categories
+$categories = Category::getAllCategory();
 
 //-----------------------------------------------------------
 // REQUEST_METHOD POST For search
@@ -88,15 +91,99 @@ if (isset($_GET['category'])) {
         <div class=" container">
             <br>
 
+            <!-- dropdown -->
+            <div class="dropdown">
+                <a class="btn  btn-outline-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    products
+                </a>
+                <ul class="dropdown-menu">
+                <a class="dropdown-item <?=(empty($_GET['category']) &&$current_page_name == 'index'? 'active': '')?>" href="<?= asset('index.php') ?>">All products</a>
+                    <?php
+                    foreach ($categories as $category) { ?>
 
-            <h1></h1>
+                        <li>
+                            <a class="dropdown-item <?php echo (isset($_GET['category']) && $category["categorie_id"] == $_GET['category'] ? 'active' : ''); ?>" href="<?= 'index.php?category=' . $category["categorie_id"] ?>">
+                                <?= $category["name"] ?>
+                            </a>
+                        </li>
+                    <?php
+                    }
+                    ?>
+                </ul>
+            </div>
+            <hr>
             <section class="d-flex flex-wrap flex-row w-100 mx-auto">
 
-                <section class=" col-lg-3 col-md-4 col-sm-6 "></section>
+                <section class=" col-lg-3 col-md-4 col-sm-6 ">
+                    <div class="card mx-1">
+                        <img src="<?= asset('assets/images/products/hoodie-ash.png') ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <hr>
+                            <div class="col-12">
+
+                                <a href="#" class="card-link btn btn-primary col-4">Show</a>
+                                <a href="#" class="card-link btn  btn-success col-6">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class=" col-lg-3 col-md-4 col-sm-6 ">
+                    <div class="card mx-1">
+                        <img src="<?= asset('assets/images/products/hoodie-ash.png') ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <hr>
+                            <div class="col-12">
+
+                                <a href="#" class="card-link btn btn-primary col-4">Show</a>
+                                <a href="#" class="card-link btn  btn-success col-6">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class=" col-lg-3 col-md-4 col-sm-6 ">
+                    <div class="card mx-1">
+                        <img src="<?= asset('assets/images/products/hoodie-ash.png') ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <hr>
+                            <div class="col-12">
+
+                                <a href="#" class="card-link btn btn-primary col-4">Show</a>
+                                <a href="#" class="card-link btn  btn-success col-6">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class=" col-lg-3 col-md-4 col-sm-6 ">
+                    <div class="card mx-1">
+                        <img src="<?= asset('assets/images/products/hoodie-ash.png') ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <hr>
+                            <div class="col-12">
+
+                                <a href="#" class="card-link btn btn-primary col-4">Show</a>
+                                <a href="#" class="card-link btn  btn-success col-6">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
             </section>
         </div>
     </main>
     <!-- Main End -->
+
+    <!-- Footer End -->
+    <?php require_once '../layouts/footer.php' ?>
+    <!-- Footer End -->
 
 
     <!-- SweetAlert -->

@@ -86,7 +86,7 @@ if (isset($_POST['addProduct'])) {
             <!-- Sidebar End -->
 
             <!-- Main Start -->
-            <main role="main" class="col-9 px-4">
+            <main role="main" class="col-10 px-4">
                 <!-- Breadcrumb -->
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -146,8 +146,8 @@ if (isset($_POST['addProduct'])) {
                     <div class="col-12 w-100 mt-4 ">
                         <div class=" ms-auto" style="width:25.9%;">
                             <!-- <button type="submit" name="editProduct" class="btn btn-danger   ">Cancel</button> -->
-                            <a  href="<?= asset('admin/product/product.php') ?>" class="btn  btn-danger ">Cancel</a>
-                            <button type="submit" name="addProduct" class="btn btn-success me-2">Create</button>
+                            <a  href="<?= asset('admin/product/product.php') ?>" class="btn  btn-danger col-5">Cancel</a>
+                            <button type="submit" name="addProduct" class="btn btn-success me-2 col-6">Create</button>
 
                         </div>
                     </div>
