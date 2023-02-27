@@ -9,14 +9,14 @@ $current_page_name = basename($_SERVER['PHP_SELF'], 'php');
 
 //Time Zone Sweden
 date_default_timezone_set("Europe/Stockholm");
-$format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
+$format = "Y-m-d H:i:s"; //2023-02-07 18:48:54
 
 //START SESSION
 session_start();
 
 //-----------------------------------------------------------
 // Categories
-$categories = Category::getCategory();
+$categories = Category::getAllCategory();
 
 
 
@@ -100,23 +100,23 @@ if (isset($_POST['addProduct'])) {
                 </div>
 
                 <!-- Form Start -->
-                <form method="post" class="mb-5" enctype="multipart/form-data">
+                <form method="post" class="mb-5 row" enctype="multipart/form-data">
                     <div class="form-group mt-3">
                         <label for="title" class=" mb-2">Title</label>
                         <input type="text" class="form-control" name="title" id="title">
                         <!-- <small class="form-text text-muted">Write product name</small> -->
                     </div>
-                    <div class="form-group mt-3">
+                    <div class="form-group mt-3 col-6">
                         <label for="price" class="mb-2">Price : </label>
                         <input type="number" class="form-control" name="price" id="price">
                         <!-- <small class="form-text text-muted">Write product price </small> -->
                     </div>
-                    <div class="form-group mt-3">
+                    <div class="form-group mt-3 col-6">
                         <label for="color" class="mb-2">Color : </label>
                         <input type="text" class="form-control" name="color" id="color">
                         <!-- <small class="form-text text-muted">Write product color </small> -->
                     </div>
-                    <div class="form-group mt-3">
+                    <div class="form-group mt-3 col-6">
                         <label for="categoryId" class=" mb-2">Category:</label>
                         <select class="form-control " name="categoryId" id="categoryId">
                             <?php
@@ -131,19 +131,26 @@ if (isset($_POST['addProduct'])) {
                             ?>
                         </select>
                     </div>
+                    <div class="form-group mt-3 col-6">
+                        <label for="image" class=" mb-2">Image : </label>
+                        <input type="file" class="form-control" name="image" id="image">
+                        <small class="form-text text-muted"></small>
+                    </div>
                     <div class="form-group mt-3">
                         <label for="body" class=" mb-2">Body: </label>
                         <textarea class="form-control" name="body" id="body" rows="3"></textarea>
                         <small class="form-text text-muted"></small>
                     </div>
 
-                    <div class="form-group mt-3">
-                        <label for="image" class=" mb-2">Image : </label>
-                        <input type="file" class="form-control" name="image" id="image">
-                        <small class="form-text text-muted"></small>
-                    </div>
 
-                    <button type="submit" name="addProduct" class="btn btn-success mt-4 col-12">Create</button>
+                    <div class="col-12 w-100 mt-4 ">
+                        <div class=" ms-auto" style="width:25.9%;">
+                            <!-- <button type="submit" name="editProduct" class="btn btn-danger   ">Cancel</button> -->
+                            <a  href="<?= asset('admin/product/product.php') ?>" class="btn  btn-danger ">Cancel</a>
+                            <button type="submit" name="addProduct" class="btn btn-success me-2">Create</button>
+
+                        </div>
+                    </div>
                 </form>
                 <!-- Form End -->
 

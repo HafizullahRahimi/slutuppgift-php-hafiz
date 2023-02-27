@@ -1,6 +1,8 @@
 <?php
 //require Files
 require_once '../../functions/helpers.php';
+require_once '../../database/Product.php';
+require_once '../../database/Category.php';
 
 //The Current Page Filename
 $current_page_name = basename($_SERVER['PHP_SELF'], 'php');
@@ -11,6 +13,18 @@ $format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
 
 //START SESSION
 session_start();
+
+//-----------------------------------------------------------
+// Product
+$products = Product::getAllProducts();
+
+//-----------------------------------------------------------
+// Category
+// $nameCategory = Category::getCategory(2);
+// // echo $nameCategory;
+
+
+
 
 ?>
 
@@ -42,44 +56,55 @@ session_start();
             <!-- Main Start -->
             <main role="main" class="col-9 px-4">
                 <div class="d-flex justify-content-between mt-5">
-                    <h3>Products</h3>
+                    <h3></h3>
                     <a href="<?= asset('admin/product/new-product.php') ?>" class="btn btn-outline-success">
                         <i class="fa-solid fa-plus me-2"></i>New Product
                     </a>
                 </div>
                 <br>
                 <!-- Products Table -->
-                <div class="table-responsive">
-                    <table class="table table-striped table-sm">
-                        <thead>
-                            <tr>
-                                <th> # </th>
+                <div class="">
+                    <table class="table table-striped caption-top ">
+                        <caption class="fs-2 fw-bold ">List of products</caption>
+                        <thead class="">
+                            <tr class="">
+                                <th>ID</th>
                                 <th>Title </th>
-                                <th>Name </th>
-                                <th>Settings </th>
+                                <th>Category</th>
+                                <th>Color</th>
+                                <th>Price</th>
+                                <th>Created at</th>
+                                <th>Updated at</th>
+                                <th>Status</th>
+                                <th>Settings</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="">
+                            <!-- Rows Product -->
+                            <?php if (count($products) > 0) {
+                                foreach ($products as $product) { ?>
+                                    <tr class="<?= ($product["status"] == 1) ? '' : 'table-danger' ?>">
+                                        <td><?= $product["product_id"] ?></td>
+                                        <td><?= $product["title"] ?></td> 
+                                        <td><?= Category::getCategory($product["category_id"])  ?></td> 
+                                        <td><?= $product["color"] ?></td> 
+                                        <td><?= $product["price"] ?></td> 
+                                        <td><?= $product["created_at"] ?></td> 
+                                        <td><?= $product["updated_at"] ?></td> 
+                                        <td>
+                                            <a href="<?= asset('admin/product/status-product.php?status=1&id=') . $product["product_id"] ?>" class="btn btn btn-sm <?= ($product["status"] == 1) ? 'btn-primary disabled' : 'btn-outline-primary' ?> "  >Enable</a>
+                                            <a href="<?= asset('admin/product/status-product.php?status=0&id=') . $product["product_id"] ?>" class="btn btn btn-sm <?= ($product["status"] == 1) ? 'btn-outline-danger' : 'btn-danger disabled' ?>">Disable</a>
+                                        </td> 
+                                        <td>
+                                            <a href="<?= asset('admin/product/edit-product.php?id=') . $product["product_id"]  ?>" class="btn btn btn-success btn-sm">Edit</a>
+                                        </td>
+                                    </tr>
+                            <?php }
+                            } ?>
+                            <?php ?>
 
-                            <tr>
-                                <td> <?php echo 'id' ?> </td>
-                                <td> <?php echo 'title' ?> </td>
-                                <td> <?php echo 'name' ?> </td>
-                                <td>
-                                    <a href="<?= asset('admin/product/edit-product.php') . '?id=11' ?>" class="btn btn btn-primary btn-sm">Edit</a>
-                                    <a href="<?= asset('admin/product/delete-product.php') . '?id=11' ?>" class="btn btn btn-outline-danger btn-sm">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td> <?php echo 'id' ?> </td>
-                                <td> <?php echo 'title' ?> </td>
-                                <td> <?php echo 'name' ?> </td>
 
-                                <td>
-                                    <a href="" class="btn btn-sm  btn-primary">Edit</a>
-                                    <a href="" class="btn btn-sm btn-outline-danger">Delete</a>
-                                </td>
-                            </tr>
+
 
                             <!-- Not Found product -->
                             <!-- <div class="alert alert-danger" role="alert"></div> -->
