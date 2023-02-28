@@ -64,7 +64,7 @@ if (isset($_GET['category'])) {
 <head>
     <!-- Head  -->
     <?php require_once '../layouts/head.php' ?>
-    <title>Home</title>
+    <title>Product</title>
 </head>
 
 <body onload="">
@@ -78,13 +78,6 @@ if (isset($_GET['category'])) {
                     <img src=" <?= asset('assets/images/logo.png'); ?>" alt="" width="210" height="70" class=" " />
                 </a>
             </div>
-            <!-- Search Form -->
-            <div class="d-flex align-items-center mb-5">
-                <form class="w-100 me-3 d-flex" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                    <input name="search" type="text" class="form-control" placeholder="Search" aria-label="Search">
-                    <button type="submit" class="me-4 ms-2 btn  btn-primary ">Search</button>
-                </form>
-            </div>
         </div>
         <!-- Navbar -->
         <?php require_once '../layouts/navbar.php' ?>
@@ -93,48 +86,58 @@ if (isset($_GET['category'])) {
 
     <!-- Main Start -->
     <main>
-        <div class="container">
+        <div class="container-fluid">
             <br>
 
-            <!-- Carousel -->
-            <div id="carouselExampleCaptions" class="carousel slide">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="<?= asset('assets/images/robot.jpg'); ?>" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Some representative placeholder content for the first slide.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="<?= asset('assets/images/robot.jpg'); ?>" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="<?= asset('assets/images/robot.jpg'); ?>" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+            <!-- dropdown -->
+            <div class="dropdown">
+                <a class="btn  btn-outline-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Filter
+                </a>
+                <ul class="dropdown-menu">
+                    <a class="dropdown-item <?= (empty($_GET['category']) && $current_page_name == 'product' ? 'active' : '') ?>" href="<?= asset('index.php') ?>">All products</a>
+                    <?php
+                    foreach ($categories as $category) { ?>
+
+                        <li>
+                            <a class="dropdown-item <?php echo (isset($_GET['category']) && $category["categorie_id"] == $_GET['category'] ? 'active' : ''); ?>" href="<?= 'product.php?category=' . $category["categorie_id"] ?>">
+                                <?= $category["name"] ?>
+                            </a>
+                        </li>
+                    <?php
+                    }
+                    ?>
+                </ul>
             </div>
+            <hr>
+            <!-- Products -->
+            <section class="d-flex flex-wrap flex-row w-100 mx-auto">
+                <!-- Rows Product -->
+                <?php if (count($products) > 0) {
+                    foreach ($products as $product) {
+                        if ($product["status"] == 1) { ?>
+                            <section class=" col-lg-3 col-md-4 col-sm-6 " >
+                                <div class="card mx-1 my-2" style="height: 420px;">
+                                    <img src="<?= asset('upload/products') . '/'. $product["image"]?>" class="card-img-top col-12" alt="..." height="200">
+                                    <div class="card-body col-12">
+                                        <h5 class="card-title"><?= $product["title"] ?></h5>
+                                        <span class=" text-primary"><?= $product["price"] ?> kr</span>
+                                        <p class="card-text"><?= substr($product["body"], 0, 60)  ?> ...</p>
+                                        <hr>
+                                        <div class="col-12">
+                                            <a href="<?= asset('app/single.php?id=') . $product["product_id"] ?>" class="card-link btn btn-primary col-4">Show</a>
+                                            <a href="<?= asset('app/cart/cart.php?id=') . $product["product_id"] ?>" class="card-link btn  btn-success col-6">Buy</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                <?php }
+                    }
+                } ?>
+
+
+                
+            </section>
         </div>
     </main>
     <!-- Main End -->

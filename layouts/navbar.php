@@ -23,20 +23,33 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 ?>
 
 <!-- Navbar Start -->
-<nav class="navbar navbar-expand-md " style="background-color: #b5c0c9;">
+<nav class="navbar navbar-expand-md bg-body-tertiary">
     <div class="container">
         <!-- LOGO -->
         <a class="navbar-brand" href="<?= asset('index.php') ?>">
             <img src=" <?= asset('assets/images/logo.png'); ?>" alt="" width="110" height="40" class=" " />
         </a>
-        <!-- Search and User Menu-->
+        <!-- Navbar -->
+
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link <?= ($current_page_name == 'index' ? 'active' : '') ?>" aria-current="page" href="<?= asset('app/index.php') ?>">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?= ($current_page_name == 'product' ? 'active' : '') ?>" href="<?= asset('app/product.php') ?>">Product</a>
+                
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact us</a>
+            </li>
+            <li class="nav-item">
+                <!-- <a class="nav-link disabled">Disabled</a> -->
+            </li>
+        </ul>
+
+        <!-- User Menu-->
         <div>
             <div class="d-flex align-items-center <?php if (!isset($_SESSION["userName"])) echo 'd-none' ?>">
-                <!-- Search Form -->
-                <!-- <form class="w-100 me-3 d-flex" role="search">
-                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-                    <button type="submit" class="me-4 ms-2 btn btn-success ">Search</button>
-                </form> -->
 
                 <!-- User Menu -->
                 <div class="flex-shrink-0 dropdown me-5">
@@ -79,11 +92,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         </div>
         <!-- Login and Sign up -->
         <div class="col-md-3 text-end ms-auto <?php if (isset($_SESSION["userName"])) echo 'd-none' ?>">
-
+            <!-- login -->
             <a class="btn btn-outline-primary me-2 <?php if ($current_page_name == 'login') echo 'active'; ?>" href="<?= asset('/auth/login.php') ?>">
                 Login
             </a>
-            <a class="btn  position-relative " href="<?= asset('/auth/register.php') ?>">
+            <!-- Cart -->
+            <a class="btn  position-relative " href="<?= asset('/app/cart/cart.php') ?>">
                 <!-- <i class="fa-solid fa-cart-shopping text-primary fs-3"></i> -->
                 <i class="fa-solid fa-cart-shopping  text-primary-emphasis fs-3"></i>
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill  bg-primary d-none">
