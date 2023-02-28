@@ -80,8 +80,30 @@ class Product extends Connection
         $conn->close();
         return $productArr;
     }
+    // Get All Products
+    public static  function getAllActiveProducts()
+    {
+        // Create connection
+        $conn = Connection::openConn();
 
-    // Get Product
+        $sql = "SELECT * FROM products WHERE `status` = 1  ORDER BY created_at DESC;";
+        $result = $conn->query($sql);
+        $productArr = array();
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                array_push($productArr, $row);
+            }
+        } else {
+            $productArr = array();;
+        }
+
+        $conn->close();
+        return $productArr;
+    }
+
+    // Get Product by ID
     public static  function getProduct($id)
     {
         // Create connection
@@ -107,5 +129,33 @@ class Product extends Connection
 
         $conn->close();
         return $product;
+    }
+    // Get Products By Category ID
+    public static  function getProducts($categoryId)
+    {
+        // Create connection
+        $conn = Connection::openConn();
+
+        // prepare and bind
+        $stmt = $conn->prepare("SELECT * FROM `products` WHERE `status` = 1 && `category_id` = ?;");
+        //set parameters
+        $stmt->bind_param("i", $categoryId);
+        // execute
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $productArr = array();
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                array_push($productArr, $row);
+            }
+        } else {
+            $productArr = array();;
+        }
+
+        $conn->close();
+        return $productArr;
     }
 }

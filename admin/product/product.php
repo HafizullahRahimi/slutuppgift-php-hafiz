@@ -89,7 +89,7 @@ $products = Product::getAllProducts();
                                         <td><?= Category::getCategory($product["category_id"])  ?></td> 
                                         <td><?= $product["color"] ?></td> 
                                         <td><?= $product["price"] ?></td> 
-                                        <td><?= $product["created_at"] ?></td> 
+                                        <td><?=  $product["created_at"] ?></td> 
                                         <td><?= $product["updated_at"] ?></td> 
                                         <td>
                                             <div class="row me-1 " style="width: 200px;">
