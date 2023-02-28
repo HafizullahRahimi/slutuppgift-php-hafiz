@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     <div class="container">
         <!-- LOGO -->
         <a class="navbar-brand" href="<?= asset('account/profile.php') ?>">
-            <img src=" <?= asset('assets/images/verified-account.png'); ?>" alt="" width="34" height="34" class=" " />
+            <img src=" <?= asset('assets/images/administrator.png'); ?>" alt="" width="34" height="34" class=" " />
         </a>
 
         <ul class="nav nav-pills me-auto">
@@ -30,21 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 <a class="nav-link" href="<?= asset('index.php') ?>">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php if ($current_page_name == 'profile') echo 'active' ?>" aria-current="page" href="<?= asset('app/account/profile.php') ?>">Profile</a>
+                <a class="nav-link <?= ($current_page_name == 'profile') ? 'active' : '' ?>" aria-current="page" href="<?= asset('app/account/profile.php') ?>">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php if ($current_page_name == 'park') echo 'active' ?> <?php if (isset($_SESSION["regNum"])) echo 'disabled' ?>" href="<?= asset('app/account/park.php') ?>">Park...</a>
+                <a class="nav-link <?= ($current_page_name == 'order') ? 'active' : '' ?> <?= ($_SESSION["userRole"] == 0) ? 'd-none' : ''?>" href="<?= asset('app/account/order.php') ?>">Order</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link <?php if ($current_page_name == 'delivery') echo 'active' ?> <?php if (!isset($_SESSION["regNum"])) echo 'disabled' ?>" href="<?= asset('app/account/delivery.php') ?>">Delivery...</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link <?php if ($current_page_name == 'move') echo 'active' ?> <?php if (!isset($_SESSION["regNum"])) echo 'disabled' ?>" href="<?= asset('app/account/move.php') ?>">Move...</a>
-            </li>
-
-            <?php if ($_SESSION["userName"] == 'Hafizullah') {
-                echo '<li class="nav-item"><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">CSV Files</button> </li>';
-            } ?>
         </ul>
 
 
@@ -53,16 +43,15 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             <div class="d-flex align-items-center <?php if (!isset($_SESSION["userName"])) echo 'd-none' ?>">
                 <div class="flex-shrink-0 dropdown">
                     <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="<?php if ($_SESSION["userName"] == 'Hafizullah') {
-                                        echo asset('assets\images\administrator.png');
-                                    } else {
-                                        echo asset('assets\images\user.png');
-                                    } ?>" alt="mdo" width="32" height="32" class="rounded-circle" />
+                        <img src="<?= asset('assets\images\user.png');?>" alt="mdo" width="32" height="32" class="rounded-circle" />
                         <?= $_SESSION["userName"] ?>
                     </a>
                     <ul class="dropdown-menu text-small">
                         <li>
-                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item text-success <?= ($_SESSION["userRole"] == 1) ? 'd-none' : ''?>" href="<?= asset('admin/index.php') ?>">Admin Panel</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="<?= asset('app/account/account-setting.php') ?>">Settings</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider" />
@@ -107,14 +96,14 @@ if ($logoutAlert) {
             </div>
             <div class="modal-body">
                 <h2 class="fs-5">Users CSV</h2>
-                <a href="<?= asset('files/users.csv')?>" class="btn  btn-outline-dark" data-bs-toggle="tooltip" title="Download users.csv" download="users_<?=date("Y/m/d H:i");?>.csv">Download </a>
-                    <hr>
+                <a href="<?= asset('files/users.csv') ?>" class="btn  btn-outline-dark" data-bs-toggle="tooltip" title="Download users.csv" download="users_<?= date("Y/m/d H:i"); ?>.csv">Download </a>
+                <hr>
                 <h2 class="fs-5">Parking CSV</h2>
-                <a href=" <?= asset('files/parking.csv')?>" class="btn  btn-outline-dark" data-bs-toggle="tooltip" title="Download parking.csv" download="parking_<?=date("Y/m/d H:i");?>.csv">Download </a>
-                
+                <a href=" <?= asset('files/parking.csv') ?>" class="btn  btn-outline-dark" data-bs-toggle="tooltip" title="Download parking.csv" download="parking_<?= date("Y/m/d H:i"); ?>.csv">Download </a>
+
             </div>
             <div class="modal-footer">
-                <span class="w-auto me-auto"><?php echo date("Y/m/d H:i");?></span>
+                <span class="w-auto me-auto"><?php echo date("Y/m/d H:i"); ?></span>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>

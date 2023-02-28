@@ -70,7 +70,8 @@ class User extends Connection
         $_SESSION["userPassword"] = $password;
         $_SESSION["userGender"] = $gender;
         $_SESSION["userImg"] = $img;
-
+        $_SESSION["userRole"] = 1;
+        
 
         redirect('app/account/profile.php?registered=1');
     }
@@ -106,7 +107,8 @@ class User extends Connection
                 $_SESSION["userImg"] = $row["image"];
             }
             $login = true;
-            redirect('app/account/profile.php?signed=1');
+            if ($_SESSION["userRole"] == 1) redirect('app/account/profile.php?signed=1');
+            else redirect('admin/index.php');
         } else {
             $login = false;
         }
