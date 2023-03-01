@@ -7,7 +7,8 @@ require_once '../database/Product.php';
 //The Current Page Filename
 $current_page_name = basename($_SERVER['PHP_SELF'], 'php');
 
-
+//START SESSION
+session_start();
 
 
 //-----------------------------------------------------------
@@ -19,7 +20,7 @@ $categoryId = 3;
 if (isset($_GET['productId'])) {
     $productId = $_GET['productId'];
     $product = Product::getProduct($productId);
-    dd( $product);
+    // dd( $product);
 
     $categoryId=$product["category_id"];
 
@@ -69,7 +70,7 @@ if (isset($_GET['productId'])) {
                         <div class="mb-1 text-muted"> <?= $product["created_at"] ?></div>
                         <strong class="text-success"><?= $product["price"] ?>kr</strong>
                         <div class="card-text mb-auto"><?= $product["body"] ?></div>
-                        <a href="<?= asset('app/cart/controller-cart.php?productId=') . $product["product_id"]  . '&categoryId=' . $product["category_id"] ?>" class="card-link btn btn-primary col-4">Buy</a>
+                        <a href="<?= asset('app/cart/cart-controller.php?productId=') . $product["product_id"]  . '&categoryId=' . $product["category_id"] ?>" class="card-link btn btn-primary col-4">Buy</a>
                     </div>
                     <div class="d-flex justify-content-center align-items-center bg-body-secondary col-4">
                         <img src="<?= asset('upload/products') . '/' . $product["image"] ?>" class="card-img-top col-12" alt="..." style="height: 200px; width:auto;">

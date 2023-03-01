@@ -10,6 +10,7 @@ $current_page_name = basename($_SERVER['PHP_SELF'], '.php');
 
 // START SESSION
 session_start();
+require_once '../../functions/checkLogin.php';
 
 // echo $_SESSION["dRegNum"];
 

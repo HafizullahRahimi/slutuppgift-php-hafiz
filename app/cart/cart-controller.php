@@ -3,7 +3,7 @@
 require_once '../../functions/helpers.php';
 
 //The Current Page Filename
-$current_page_name = basename($_SERVER['PHP_SELF'], 'php');
+$current_page_name = basename($_SERVER['PHP_SELF'], '.php');
 
 //Time Zone Sweden
 date_default_timezone_set("Europe/Stockholm");

@@ -17,9 +17,6 @@ $format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
 session_start();
 
 
-$text = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium, vel id, qui nostrum eos distinctio sit harum a velit aliquam officia. Magni laudantium tenetur, a fugiat praesentium consequuntur modi, dolorum voluptates quia ipsam tempore aut! Soluta ex facere quasi fuga magnam officiis libero rem. Dolores expedita distinctio nesciunt vel eius?';
-// echo substr($text , 0, 30) . "..." ;
-
 //-----------------------------------------------------------
 // Categories
 $categories = Category::getAllCategory();

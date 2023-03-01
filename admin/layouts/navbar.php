@@ -1,4 +1,5 @@
 <?php
+
 //The Current Page Filename
 $current_page_name = basename($_SERVER['PHP_SELF'], '.php');
 // echo $current_page_name; // return: index
@@ -22,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container">
         <!-- LOGO -->
-        <a class="navbar-brand" href="<?= asset('index.php') ?>">
+        <a class="navbar-brand" href="<?= asset('admin/index.php') ?>">
             <img src=" <?= asset('assets/images/settings.png'); ?>" alt="" width="34" height="34" class=" " />
             Admin Panel
         </a>

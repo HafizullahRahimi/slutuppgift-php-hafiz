@@ -8,25 +8,12 @@ require_once '../../database/Product.php';
 $current_page_name = basename($_SERVER['PHP_SELF'], 'php');
 
 
-
+//START SESSION
+session_start();
 
 //-----------------------------------------------------------
 
-$product = array();
-$categoryId = 3;
-
-// REQUEST_METHOD Get For Category
-if (isset($_GET['productId'])) {
-    $productId = $_GET['productId'];
-    $product = Product::getProduct($productId);
-    dd($product);
-
-    $categoryId = $product["category_id"];
-}
-
-
 ?>
-
 
 
 
@@ -61,19 +48,8 @@ if (isset($_GET['productId'])) {
     <main>
         <div class="container mt-5 mb-5">
             <div class="card">
-                <div class="card-header">
-                    <ul class="nav nav-tabs card-header-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="true" href="#">Your cart</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="#">Email</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled">Address</a>
-                        </li>
-                    </ul>
-                </div>
+                <!-- card-header -->
+                <?php require_once 'layouts/card-header.php' ?>
                 <div class="card-body">
                     <!-- <h5 class="card-title">Special title treatment</h5>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
@@ -98,12 +74,21 @@ if (isset($_GET['productId'])) {
                                 </div>
                                 <span class="text-muted">$8</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <li class="list-group-item d-flex justify-content-between lh-sm ">
                                 <div>
-                                    <h6 class="my-0">Third item</h6>
-                                    <small class="text-muted">Brief description</small>
+                                    <h6 class="my-0 ">Third item</h6>
+                                    <small class="text-muted ">Brief description</small>
                                 </div>
-                                <span class="text-muted">$5</span>
+                                <div class="d-flex col-4 justify-content-between">
+                                    <div>
+                                        
+                                        <a href="#"class="badge bg-secondary rounded-pill p-2" ><i class="fa-solid fa-plus "></i></a>
+                                        <span class="badge bg-primary  mx-2 fs-6">3</span>
+                                        <a href="#"class="badge bg-secondary rounded-pill p-2" ><i class="fa-solid fa-minus "></i></a>
+
+                                    </div>
+                                    <span class="text-muted">$5</span>
+                                </div>
                             </li>
                             <li class="list-group-item d-flex justify-content-between bg-light">
                                 <div class="text-success">
@@ -112,24 +97,18 @@ if (isset($_GET['productId'])) {
                                 </div>
                                 <span class="text-success">−$5</span>
                             </li>
+                            <!-- Total -->
                             <li class="list-group-item d-flex justify-content-between">
-                                <span>Total (USD)</span>
-                                <strong>$20</strong>
+                                <span>Total (kr)</span>
+                                <strong>20kr</strong>
                             </li>
                         </ul>
-
-                        <form class="card p-2">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Promo code">
-                                <button type="submit" class="btn btn-secondary">Redeem</button>
-                            </div>
-                        </form>
                     </div>
 
                     <!-- BTN Next -->
                     <div class="col-12 text-end mt-4">
-                        <a href="#" class="btn btn-danger col-2">Cancel</a>
-                        <a href="#" class="btn btn-primary col-2">Next</a>
+                        <a href="<?= asset('/app/index.php') ?>" class="btn btn-danger col-1">Cancel</a>
+                        <a href="<?= asset('/app/cart/cart-email.php') ?>" class="btn btn-primary col-1">Next</a>
                     </div>
                 </div>
             </div>

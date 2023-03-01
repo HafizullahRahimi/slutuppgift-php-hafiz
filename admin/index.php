@@ -14,6 +14,7 @@ $format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
 //START SESSION
 session_start();
 
+require_once '../functions/checkIsAdmin.php';
 //-----------------------------------------------------------
 // REQUEST_METHOD GET
 

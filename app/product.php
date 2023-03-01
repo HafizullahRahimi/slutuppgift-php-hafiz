@@ -136,7 +136,7 @@ if (isset($_GET['category'])) {
                                     <hr>
                                     <div class="col-12">
                                         <a href="<?= asset('app/single-product.php?productId=') . $product["product_id"] ?>" class="card-link btn  btn-success col-4">Show</a>
-                                        <a href="<?= asset('app/cart/controller-cart.php?productId=') . $product["product_id"]  . '&categoryId=' . $categoryId ?>" class="card-link btn btn-primary col-6">Buy</a>
+                                        <a href="<?= asset('app/cart/cart-controller.php?productId=') . $product["product_id"]  . '&categoryId=' . $categoryId ?>" class="card-link btn btn-primary col-6">Buy</a>
                                     </div>
                                 </div>
                             </div>

@@ -92,8 +92,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 </a>
             </div>
             <!-- Cart -->
-            <div class="text-end me-5 <?= (isset($_SESSION["userRole"]) && $_SESSION["userRole"] == 0) ? 'd-none' : ''?>">
-                <a class="btn btn-outline-primary position-relative " href="<?= asset('/app/cart/cart.php') ?>">
+            <div class="text-end me-5  <?= (isset($_SESSION["userRole"]) && $_SESSION["userRole"] == 0) ? 'd-none' : ''?>">
+                <a class="btn position-relative <?= ($current_page_name == 'cart' ? 'btn-primary' : 'btn-outline-primary') ?>" href="<?= asset('/app/cart/cart.php') ?>">
                     Cart
                     <i class="fa-solid fa-cart-shopping "></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill  bg-primary d-none">

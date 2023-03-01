@@ -13,6 +13,7 @@ $format = "Y-m-d H:i:s"; //2023-02-07 18:48:54
 
 //START SESSION
 session_start();
+require_once '../../functions/checkIsAdmin.php';
 
 //-----------------------------------------------------------
 // Categories
@@ -90,7 +91,7 @@ if (isset($_POST['addProduct'])) {
                 <!-- Breadcrumb -->
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= asset('admin/product/product.php') ?>">Products</a></li>
+                        <li class="breadcrumb-item"><a href="<?= asset('admin/product/product.php') ?>">Product</a></li>
                         <li class="breadcrumb-item active" aria-current="page">New product</li>
                     </ol>
                 </nav>
