@@ -31,24 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php ?>
 
 
-<!-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                </li> -->
-
-
 <!-- Admin HTML-->
 <!DOCTYPE html>
 <html lang="en">
@@ -75,130 +57,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php require_once './layouts/sidebar.php'; ?>
             <!-- Sidebar End -->
             <!-- Main Start -->
-            <main role="main" class="col-10 px-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dash board</h1>
-                </div>
-                <!-- Products Table -->
-                <h3>Products</h3>
-                <div class="table-responsive">
-                    <table class="table table-striped table-sm">
-                        <thead>
-                            <tr>
-                                <th> # </th>
-                                <th>Title </th>
-                                <th>Name </th>
-                                <th>Settings </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <tr>
-                                <td> <?php echo 'id' ?> </td>
-                                <td> <?php echo 'title' ?> </td>
-                                <td> <?php echo 'name' ?> </td>
-                                <td>
-                                    <a href="" class="btn btn btn-primary btn-sm">Edit</a>
-                                    <a href="" class="btn btn btn-outline-danger btn-sm">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td> <?php echo 'id' ?> </td>
-                                <td> <?php echo 'title' ?> </td>
-                                <td> <?php echo 'name' ?> </td>
-
-                                <td>
-                                    <a href="" class="btn btn-sm  btn-primary">Edit</a>
-                                    <a href="" class="btn btn-sm btn-outline-danger">Delete</a>
-                                </td>
-                            </tr>
-
-                            <!-- Not Found product -->
-                            <!-- <div class="alert alert-danger" role="alert"></div> -->
-
-
-                        </tbody>
-                    </table>
-                </div>
-                <br>
-                <!-- Categories Table -->
-                <h3>Categories</h3>
-                <div class="table-responsive">
-                    <table class="table table-striped table-sm">
-                        <thead>
-                            <tr>
-                                <th> Id </th>
-                                <th>Name </th>
-                                <th>Settings </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td> <?php echo 'id' ?> </td>
-                                <td> <?php echo 'name' ?> </td>
-                                <td>
-                                    <a href="" class="btn btn btn-primary btn-sm">Edit</a>
-                                    <a href="" class="btn btn btn-outline-danger btn-sm">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td> <?php echo 'id' ?> </td>
-                                <td> <?php echo 'name' ?> </td>
-
-                                <td>
-                                    <a href="" class="btn btn-sm  btn-primary">Edit</a>
-                                    <a href="" class="btn btn-sm btn-outline-danger">Delete</a>
-                                </td>
-                            </tr>
-
-
-                            <!-- Not Found Category -->
-                            <!-- <div class="alert alert-danger" role="alert"></div> -->
-
-
-
-                        </tbody>
-                    </table>
-                </div>
-                <br>
-                <!-- Orders Table -->
-                <h3>Orders</h3>
-                <div class="table-responsive">
-                    <table class="table table-striped table-sm">
-                        <thead>
-                            <tr>
-                                <th> Id </th>
-                                <th>Name </th>
-                                <th>Settings </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td> <?php echo 'id' ?> </td>
-                                <td> <?php echo 'name' ?> </td>
-                                <td>
-                                    <a href="" class="btn btn btn-primary btn-sm">Edit</a>
-                                    <a href="" class="btn btn btn-outline-danger btn-sm">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td> <?php echo 'id' ?> </td>
-                                <td> <?php echo 'name' ?> </td>
-
-                                <td>
-                                    <a href="" class="btn btn-sm  btn-primary">Edit</a>
-                                    <a href="" class="btn btn-sm btn-outline-danger">Delete</a>
-                                </td>
-                            </tr>
-
-
-                            <!-- Not Found Order -->
-                            <!-- <div class="alert alert-danger" role="alert"></div> -->
-
-
-
-                        </tbody>
-                    </table>
+            <main class="col-10 px-4">
+                <!-- chart -->
+                <div class="col-12 mx-auto" style="height: 480px;">
+                    <canvas id="myChart"></canvas>
                 </div>
             </main>
             <!-- Main End -->
@@ -206,30 +68,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
 
-    <!-- Toast HTML-->
-    <div class="toast-container p-1 bottom-0 start-0" id="toastPlacement">
-        <div class="toast col-3 " id="toast1">
-            <div class="toast-header">
-                <img src="..." class="rounded me-2" alt="...">
-                <strong class="me-auto">Bootstrap</strong>
-                <small>11 mins ago</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                Hello, world! This is a toast message.
-            </div>
-        </div>
-    </div>
+
 
 
     <!-- script src -->
     <?php require_once '../layouts/script-src.php' ?>
 
-    <!-- Toast JS-->
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script>
-        const toast1 = document.getElementById('toast1');
-        const toastBTS1 = new bootstrap.Toast(toast1);
-        // toastBTS1.show();
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Hoodie', 'Cap', 'Skateboard', 'Tshirt', 'Wheel'],
+                datasets: [{
+                    label: 'Total product',
+                    data: [12, 16, 3, 5, 2],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
     </script>
 </body>
 

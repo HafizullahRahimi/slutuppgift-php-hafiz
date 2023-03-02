@@ -12,12 +12,6 @@ $format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
 //START SESSION
 // session_start();
 
-//-----------------------------------------------------------
-// REQUEST_METHOD GET
-
-
-//-----------------------------------------------------------
-// REQUEST_METHOD POST 
 
 
 ?>
@@ -34,29 +28,18 @@ $format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link " data-bs-toggle="collapse" href="#website" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <a class="nav-link" href="<?= asset('app/index.php') ?>">
+                    <i class="fa-solid fa-globe"></i>
                     Web Site
                 </a>
-                <div class="collapse mb-3" id="website">
-                    <ul class="nav card py-1 px-3">
-                        <li class="nav-item "><a class="nav-link" href="<?= asset('app/index.php') ?>">Home</a></li>
-                        <li class="nav-item "><a class="nav-link" href="<?= asset('app/product.php') ?>">Product</a></li>
-
-                    </ul>
-                </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link <?= ($current_page_name == 'product' || $current_page_name == 'new-product' || $current_page_name ==  'edit-product' ? 'active' : '') ?>" data-bs-toggle="collapse" href="#products" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <li class="nav-item  ">
+                <a class="nav-link <?= ($current_page_name == 'product' || $current_page_name == 'new-product' || $current_page_name ==  'edit-product' ? 'active' : '') ?>" href="<?= asset('admin/product/product.php') ?>">
+                    <i class="fa-brands fa-shopify"></i>
                     Product
                 </a>
-                <div class="collapse mb-3 " id="products">
-                    <ul class="nav card py-1 px-3">
-                        <li class="nav-item text-info "><a class="nav-link <?= ($current_page_name == 'product' ? 'active' : '') ?>" href="<?= asset('admin/product/product.php') ?>">Products</a></li>
-                        <li class="nav-item "><a class="nav-link <?= ($current_page_name == 'new-product' ? 'active' : '') ?>" href="<?= asset('admin/product/new-product.php') ?>">New product</a></li>
-
-                    </ul>
-                </div>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">
                     Categories
@@ -64,11 +47,12 @@ $format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?= asset('admin/order/order.php') ?>">
+                    <i class="fa-solid fa-bag-shopping"></i>
                     Orders
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#" >
+                <a class="nav-link disabled" href="#">
                     Users
                 </a>
             </li>
@@ -82,26 +66,26 @@ $format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
         <!-- User Menu-->
         <hr>
         <div class="d-flex align-items-center ">
-                <!-- User Menu -->
-                <div class="flex-shrink-0 dropdown me-4">
-                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="<?= asset('assets\images\user.png'); ?>" alt="mdo" width="32" height="32" class="rounded-circle" />
-                        <?= $_SESSION["userName"] ?>
-                    </a>
-                    <ul class="dropdown-menu text-small">
-                        <li>
-                            <a class="dropdown-item" href="<?= asset('app/account/profile.php') ?>">Profile</a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="<?= asset('app/account/account-setting.php') ?>">Settings</a>
-                        </li>
-                        
-                    </ul>
-                </div>
+            <!-- User Menu -->
+            <div class="flex-shrink-0 dropdown me-4">
+                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="<?= asset('assets\images\user.png'); ?>" alt="mdo" width="32" height="32" class="rounded-circle" />
+                    <?= $_SESSION["userName"] ?>
+                </a>
+                <ul class="dropdown-menu text-small">
+                    <li>
+                        <a class="dropdown-item" href="<?= asset('app/account/profile.php') ?>">Profile</a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="<?= asset('app/account/account-setting.php') ?>">Settings</a>
+                    </li>
+
+                </ul>
             </div>
+        </div>
     </div>
 </nav>
 <!-- Sidebar End -->
