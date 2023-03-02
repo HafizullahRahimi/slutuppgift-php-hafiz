@@ -25,33 +25,8 @@ $categories = Category::getAllCategory();
 // Product
 $products = Product::getAllProducts();
 
-//-----------------------------------------------------------
-// REQUEST_METHOD POST For search
-
-$showAlert = false;
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!empty($_POST["search"])) {
-        $search = $_POST["search"];
-        $showAlert = true;
-    }
-}
-
-//-----------------------------------------------------------
-// REQUEST_METHOD Get For Category
-if (isset($_GET['category'])) {
-    $categoryId = $_GET['category'];
-
-    // $products = $db->prepare('SELECT * FROM products WHERE category_id = :id');
-    // $products->execute(['id' => $categoryId]);
-} else {
-    // $queryProducts = "SELECT * FROM products";
-    // $products = $db->query($queryProducts);
-}
-
 
 ?>
-<?php ?>
-
 
 
 <!-- Home HTML-->
@@ -77,7 +52,7 @@ if (isset($_GET['category'])) {
             </div>
             <!-- Search Form -->
             <div class="d-flex align-items-center mb-5">
-                <form class="w-100 me-3 d-flex" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <form class="w-100 me-3 d-flex" method="post" action="<?= asset('app/search.php') ?>">
                     <input name="search" type="text" class="form-control" placeholder="Search" aria-label="Search">
                     <button type="submit" class="me-4 ms-2 btn  btn-primary ">Search</button>
                 </form>
@@ -138,51 +113,6 @@ if (isset($_GET['category'])) {
     <!-- Footer End -->
     <?php require_once '../layouts/footer.php' ?>
     <!-- Footer End -->
-
-
-    <!-- SweetAlert -->
-    <script>
-        function searchFound() {
-            Swal.fire({
-                title: '<h2 class="fs-4"><?= $search ?></h2>',
-                icon: 'success',
-                html: '<div class="modal-body text-start col-8 mx-auto">' +
-                    '<hr>' +
-                    '<h4 class="fs-6">Full name: <?= $fullNameF ?></h4>' +
-                    '<h4 class="fs-6">Email: <?= $emailF ?></h4>' +
-                    '<hr>' +
-                    '<h4 class="fs-6">Vehicle type: <?= $vehicleTypeF ?></h4>' +
-                    '<h4 class="fs-6">Arrival date: <?= $arrivalF ?></h4>' +
-                    '<h4 class="fs-6">Place: <?= $placeF ?></h4>' +
-                    '<h4 class="fs-6">Part: <?= $partF ?></h4>' +
-                    '<hr>' +
-                    '</div>',
-                showCloseButton: true,
-                showCancelButton: false,
-                focusConfirm: false,
-                showConfirmButton: false,
-            })
-        }
-    </script>
-    <script>
-        function searchNotFound() {
-            Swal.fire({
-                icon: 'error',
-                title: '<h2 class="fs-3"> Oops...</h2>',
-                showCloseButton: true,
-                showConfirmButton: false,
-                html: '<h4 class="fs-6 text-danger">No Vehicles Found!!</h4>',
-                footer: '<a href="">Why do I have this issue?</a>'
-            })
-        }
-    </script>
-
-    <?php
-    if ($showAlert && !$findsearch) echo '<script>searchNotFound()</script>';
-    if ($showAlert && $findsearch) echo '<script>searchFound()</script>';
-    ?>
-
-
 
     <!-- script src -->
     <?php require_once '../layouts/script-src.php' ?>

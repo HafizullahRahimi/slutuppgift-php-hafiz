@@ -158,4 +158,32 @@ class Product extends Connection
         $conn->close();
         return $productArr;
     }
+    // Get Product By title
+    public static  function getProductByTitle($title)
+    {
+        // Create connection
+        $conn = Connection::openConn();
+
+        // prepare and bind
+        $stmt = $conn->prepare("SELECT * FROM `products` WHERE `status` = 1 && `title` = ?;");
+        //set parameters
+        $stmt->bind_param("s", $title);
+        // execute
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $product = array();
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                $product= $row;
+            }
+        } else {
+            $product = array();;
+        }
+
+        $conn->close();
+        return $product;
+    }
 }

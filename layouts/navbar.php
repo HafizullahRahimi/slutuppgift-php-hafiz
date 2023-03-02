@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 <a class="nav-link <?= ($current_page_name == 'index' ? 'active' : '') ?>" aria-current="page" href="<?= asset('app/index.php') ?>">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?= ($current_page_name == 'product' ? 'active' : '') ?>" href="<?= asset('app/product.php') ?>">Product</a>
+                <a class="nav-link <?= ($current_page_name == 'product' || $current_page_name == 'search' ? 'active' : '') ?>" href="<?= asset('app/product.php') ?>">Product</a>
 
             </li>
             <li class="nav-item">
