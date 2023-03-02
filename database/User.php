@@ -8,9 +8,6 @@ class User extends Connection
     // User properties
     public $userID;
 
-
-
-
     // Setter ---------------------------------------------
     public function setUserId($email)
     {

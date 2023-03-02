@@ -30,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $err = 'Email or Password is false!!';
     }
 
-
 }
 
 ?>

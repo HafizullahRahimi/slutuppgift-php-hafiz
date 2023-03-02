@@ -80,7 +80,7 @@ class Product extends Connection
         $conn->close();
         return $productArr;
     }
-    // Get All Products
+    // Get All Active Products
     public static  function getAllActiveProducts()
     {
         // Create connection

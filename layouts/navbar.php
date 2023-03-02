@@ -96,8 +96,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 <a class="btn position-relative <?= ($current_page_name == 'cart' ? 'btn-primary' : 'btn-outline-primary') ?>" href="<?= asset('/app/cart/cart.php') ?>">
                     Cart
                     <i class="fa-solid fa-cart-shopping "></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill  bg-primary d-none">
-                        99
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill  bg-primary <?= (!isset($_SESSION['totalProducts']) || $_SESSION['totalProducts'] < 1)? 'd-none' : ''?> ">
+                    <?= $_SESSION['totalProducts']?>
                     </span>
                 </a>
             </div>
