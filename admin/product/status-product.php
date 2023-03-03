@@ -16,8 +16,7 @@ if (isset($_GET['status']) && isset($_GET['id'])) {
     $changeStatus = Product::changeStatus($id, $status);
 
     if ($changeStatus) {
-        echo 'changed status';
-        redirect('admin/product/product.php?changedStatus=1');
+        redirect('admin/product/product.php?changed=1');
     }
 
 }

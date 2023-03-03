@@ -16,10 +16,21 @@ session_start();
 require_once '../../functions/checkIsAdmin.php';
 
 //-----------------------------------------------------------
-// Product
+// Product Class
 $products = Product::getAllProducts();
 
 //-----------------------------------------------------------
+// REQUEST_METHOD GET For SWEET ALERT
+$createdAlert = false;
+$updatedAlert = false;
+
+
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+
+    (empty($_GET['created'])) ? $createdAlert  = false : $createdAlert  = true;
+    (empty($_GET['updated'])) ? $createdAlert  = false : $createdAlert  = true;
+}
+
 
 ?>
 
@@ -80,19 +91,19 @@ $products = Product::getAllProducts();
                                 foreach ($products as $product) { ?>
                                     <tr class="<?= ($product["status"] == 1) ? '' : 'table-danger' ?>">
                                         <td><?= $product["product_id"] ?></td>
-                                        <td><?= $product["title"] ?></td> 
-                                        <td><?= Category::getCategory($product["category_id"])  ?></td> 
-                                        <td><?= $product["color"] ?></td> 
-                                        <td><?= $product["price"] ?></td> 
-                                        <td><?=  $product["created_at"] ?></td> 
-                                        <td><?= $product["updated_at"] ?></td> 
+                                        <td><?= $product["title"] ?></td>
+                                        <td><?= Category::getCategory($product["category_id"])  ?></td>
+                                        <td><?= $product["color"] ?></td>
+                                        <td><?= $product["price"] ?></td>
+                                        <td><?= $product["created_at"] ?></td>
+                                        <td><?= $product["updated_at"] ?></td>
                                         <td>
                                             <div class="row me-1 " style="width: 200px;">
 
-                                                <a href="<?= asset('admin/product/status-product.php?status=1&id=') . $product["product_id"] ?>" class="col-5 text-center me-1 btn btn btn-sm <?= ($product["status"] == 1) ? 'btn-primary disabled' : 'btn-outline-primary' ?> "  >Enable</a>
+                                                <a href="<?= asset('admin/product/status-product.php?status=1&id=') . $product["product_id"] ?>" class="col-5 text-center me-1 btn btn btn-sm <?= ($product["status"] == 1) ? 'btn-primary disabled' : 'btn-outline-primary' ?> ">Enable</a>
                                                 <a href="<?= asset('admin/product/status-product.php?status=0&id=') . $product["product_id"] ?>" class="col-5 btn btn btn-sm <?= ($product["status"] == 1) ? 'btn-outline-danger' : 'btn-danger disabled' ?>">Disable</a>
                                             </div>
-                                        </td> 
+                                        </td>
                                         <td>
                                             <a href="<?= asset('admin/product/edit-product.php?id=') . $product["product_id"]  ?>" class="btn btn btn-success btn-sm">Edit</a>
                                         </td>
@@ -111,33 +122,43 @@ $products = Product::getAllProducts();
 
 
 
-    <!-- Toast HTML: For product created-->
-    <div class="toast-container  p-2 bottom-0 start-0" id="toastPlacement">
-        <div class="toast text-bg-success " id="productCreated" data-bs-delay="2000">
-            <div class="toast-header">
-                <!-- <img src="..." class="rounded me-2" alt="..."> -->
-                <i class="fa-solid fa-square-plus me-1"></i>
-                <strong class="me-auto">New product</strong>
-                <small>just now</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                The product created.
-            </div>
-        </div>
-    </div>
-
-
     <!-- script src -->
     <?php require_once '../../layouts/script-src.php' ?>
 
-    <!-- Toast JS-->
+    <!-- -------------------------------------------------------- -->
+    <!-- Sweet Alert Script -->
     <script>
-        const productCreated = document.getElementById('productCreated');
-    </script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-start',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
 
+        function showCreatedAlert() {
+            Toast.fire({
+                icon: 'success',
+                title: 'The product created'
+            })
+        }
+        function showUpdatedAlert() {
+            Toast.fire({
+                icon: 'success',
+                title: 'The product updated'
+            })
+        }
+    </script>
+    <!-- Sweet Alert Control -->
     <?php
-    if (isset($_GET['created'])) echo '<script>new bootstrap.Toast(productCreated).show();</script>';
+    
+    if ($createdAlert) echo '<script>showCreatedAlert()</script>';
+    if ($updatedAlert) echo '<script>showUpdatedAlert()</script>';
+    
     ?>
 
 </body>

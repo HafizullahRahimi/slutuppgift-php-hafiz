@@ -42,6 +42,7 @@ $format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
 
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">
+                    <i class="fa-solid fa-folder-tree"></i>
                     Categories
                 </a>
             </li>
@@ -53,11 +54,13 @@ $format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">
+                    <i class="fa-solid fa-users"></i>
                     Users
                 </a>
             </li>
             <li class="nav-item mb-5">
                 <a class="nav-link disabled" href="#">
+                    <i class="fa-solid fa-file-csv"></i>
                     CSV files
                 </a>
             </li>
@@ -69,7 +72,7 @@ $format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
             <!-- User Menu -->
             <div class="flex-shrink-0 dropdown me-4">
                 <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="<?= asset('assets\images\user.png'); ?>" alt="mdo" width="32" height="32" class="rounded-circle" />
+                    <img src="<?= asset('upload/users/admin.png'); ?>" alt="mdo" width="32" height="32" class="rounded-circle" />
                     <?= $_SESSION["userName"] ?>
                 </a>
                 <ul class="dropdown-menu text-small">

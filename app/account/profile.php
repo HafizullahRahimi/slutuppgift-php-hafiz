@@ -2,28 +2,23 @@
 //require Files
 require_once '../../functions/helpers.php';
 
-
-
 //The Current Page Filename
 $current_page_name = basename($_SERVER['PHP_SELF'], '.php');
 
-
 // START SESSION
 session_start();
+
+//-----------------------------------------------------------
+// check to Login
 require_once '../../functions/checkLogin.php';
 
-// echo $_SESSION["dRegNum"];
-
-
+//-----------------------------------------------------------
+//  REQUEST_METHOD GET For Sweet Alert
 $signedAlert = false;
 $registeredAlert = false;
-$deliveredAlert = false;
-$parkedAlert = false;
 
 
-// REQUEST_METHOD GET
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-
     if (empty($_GET['signed'])) $signedAlert  = false;
     else {
         $signedAlert  = true;
@@ -33,12 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     else {
         $registeredAlert = true;
     }
-
-    if (empty($_GET['delivered'])) $deliveredAlert = false;
-    else  $deliveredAlert = true;
-
-    if (empty($_GET['parked'])) $parkedAlert = false;
-    else  $parkedAlert = true;
 }
 
 ?>
@@ -84,13 +73,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                             }
                             ?>
                 </p>
-
             </div>
         </div>
-
     </div>
 
-
+    <!-- script src -->
+    <?php require_once '../../layouts/script-src.php' ?>
 
     <!-- Sweet Alert Script -->
     <script>
@@ -105,26 +93,16 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 toast.addEventListener('mouseleave', Swal.resumeTimer)
             }
         })
-
-
         function showSignedAlert() {
             Toast.fire({
                 icon: 'success',
-                title: 'Signed in successfully'
+                title: 'Welcome to profile'
             })
         }
-
         function showRegisteredAlert() {
             Toast.fire({
                 icon: 'success',
                 title: 'Registered in successfully'
-            })
-        }
-
-        function showDeliveredAlert() {
-            Toast.fire({
-                icon: 'success',
-                title: 'Delivered in successfully'
             })
         }
     </script>
@@ -136,16 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if ($registeredAlert) {
         echo '<script>showRegisteredAlert()</script>';
     }
-
-    if ($deliveredAlert) {
-        echo '<script>showDeliveredAlert()</script>';
-    }
     ?>
-    <!-- <script>ShowAlert()</script> -->
-
-
-    <!-- script src -->
-    <?php require_once '../../layouts/script-src.php' ?>
 </body>
 
 </html>

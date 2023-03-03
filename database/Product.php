@@ -137,7 +137,7 @@ class Product extends Connection
         $conn = Connection::openConn();
 
         // prepare and bind
-        $stmt = $conn->prepare("SELECT * FROM `products` WHERE `category_id` = ?;");
+        $stmt = $conn->prepare("SELECT * FROM `products` WHERE status = 1 AND `category_id` = ?;");
         //set parameters
         $stmt->bind_param("i", $categoryId);
         // execute

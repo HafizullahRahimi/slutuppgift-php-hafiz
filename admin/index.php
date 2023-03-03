@@ -16,9 +16,11 @@ $format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
 //START SESSION
 session_start();
 
-// Check Admin
+// Check IS Admin
 require_once '../functions/checkIsAdmin.php';
 //-----------------------------------------------------------
+
+// Get category info For Chart
 $totalHoodie = count(Product::getProducts(1));
 $totalCap = count(Product::getProducts(2));
 $totalSkateboard = count(Product::getProducts(3));
@@ -26,10 +28,23 @@ $totalTshirt = count(Product::getProducts(4));
 $totalWheel = count(Product::getProducts(5));
 
 
+//-----------------------------------------------------------
+// REQUEST_METHOD GET For SWEET ALERT
+$signedAlert = false;
 
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
+    if (empty($_GET['signed'])) $signedAlert  = false;
+    else {
+        $signedAlert  = true;
+    }
+
+}
 
 ?>
+
+
+
 
 
 
@@ -70,15 +85,12 @@ $totalWheel = count(Product::getProducts(5));
     </div>
 
 
-
-
-
     <!-- script src -->
     <?php require_once '../layouts/script-src.php' ?>
 
-    <!-- chart.js -->
+    <!-- -------------------------------------------------------- -->
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <script>
         const ctx = document.getElementById('myChart');
 
@@ -87,7 +99,7 @@ $totalWheel = count(Product::getProducts(5));
             data: {
                 labels: ['Hoodie', 'Cap', 'Skateboard', 'Tshirt', 'Wheel'],
                 datasets: [{
-                    label: 'Total product',
+                    label: 'Total product for sale',
                     data: [<?= $totalHoodie ?>, <?= $totalCap ?>, <?= $totalSkateboard ?>, <?= $totalTshirt ?>, <?= $totalWheel ?>],
                     borderWidth: 1,
                     borderColor: '#36A2EB',
@@ -96,6 +108,35 @@ $totalWheel = count(Product::getProducts(5));
             },
         });
     </script>
+
+
+<!-- -------------------------------------------------------- -->
+    <!-- Sweet Alert Script -->
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-start',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        function showSignedAlert() {
+            Toast.fire({
+                icon: 'success',
+                title: 'Welcome to Admin Panel'
+            })
+        }
+
+    </script>
+    <!-- Sweet Alert Control -->
+    <?php
+    if ($signedAlert) echo '<script>showSignedAlert()</script>';
+    ?>
 </body>
 
 </html>

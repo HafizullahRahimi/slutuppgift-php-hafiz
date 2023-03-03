@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             <div class="d-flex align-items-center <?php if (!isset($_SESSION["userName"])) echo 'd-none' ?>">
                 <div class="flex-shrink-0 dropdown">
                     <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="<?= asset('assets\images\user.png');?>" alt="mdo" width="32" height="32" class="rounded-circle" />
+                        <img src="<?= asset('upload/users/user.png');?>" alt="mdo" width="32" height="32" class="rounded-circle" />
                         <?= $_SESSION["userName"] ?>
                     </a>
                     <ul class="dropdown-menu text-small">
@@ -86,26 +86,3 @@ if ($logoutAlert) {
 }
 ?>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">CSV Files </h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-5">Users CSV</h2>
-                <a href="<?= asset('files/users.csv') ?>" class="btn  btn-outline-dark" data-bs-toggle="tooltip" title="Download users.csv" download="users_<?= date("Y/m/d H:i"); ?>.csv">Download </a>
-                <hr>
-                <h2 class="fs-5">Parking CSV</h2>
-                <a href=" <?= asset('files/parking.csv') ?>" class="btn  btn-outline-dark" data-bs-toggle="tooltip" title="Download parking.csv" download="parking_<?= date("Y/m/d H:i"); ?>.csv">Download </a>
-
-            </div>
-            <div class="modal-footer">
-                <span class="w-auto me-auto"><?php echo date("Y/m/d H:i"); ?></span>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>

@@ -105,7 +105,7 @@ class User extends Connection
             }
             $login = true;
             if ($_SESSION["userRole"] == 1) redirect('app/account/profile.php?signed=1');
-            else redirect('admin/index.php');
+            else redirect('admin/index.php?signed=1');
         } else {
             $login = false;
         }
