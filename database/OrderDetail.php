@@ -21,17 +21,44 @@ class OrderDetail extends Connection
         $stmt->execute();
         $result = $stmt->get_result();
 
-        $OrderDetails = array();
+        $OrderDetail = array();
 
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
-                $OrderDetails =  $row;
+                $OrderDetail =  $row;
             }
         }
 
         $conn->close();
-        return $OrderDetails;
+        return $OrderDetail;
+    }
+    // Get OrderDetails info by orderID
+    public static  function getOrdersInfo($orderId)
+    {
+        // Create connection
+        $conn = Connection::openConn();
+
+        // prepare and bind
+        $stmt = $conn->prepare("SELECT order_details.order_id, order_details.product_id, order_details.quantity FROM order_details INNER JOIN orders ON order_details.order_id = orders.order_id WHERE orders.order_id = ?;");
+        //set parameters
+        $stmt->bind_param("i", $orderId);
+        // execute
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $OrderDetailArr = array();
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                // dd($row);
+                array_push($OrderDetailArr, $row);
+            }
+        }
+
+        $conn->close();
+        return $OrderDetailArr;
     }
     // Methods ---------------------------------------------
     // insert Customer

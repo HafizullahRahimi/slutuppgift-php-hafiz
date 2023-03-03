@@ -1,6 +1,8 @@
 <?php
 //require Files
 require_once '../functions/helpers.php';
+require_once '../database/Product.php';
+// require_once '../../database/Category.php';
 
 
 
@@ -14,21 +16,21 @@ $format = "Y/m/d H:i:s"; //2023/02/07 18:48:54
 //START SESSION
 session_start();
 
+// Check Admin
 require_once '../functions/checkIsAdmin.php';
 //-----------------------------------------------------------
-// REQUEST_METHOD GET
+$totalHoodie = count(Product::getProducts(1));
+$totalCap = count(Product::getProducts(2));
+$totalSkateboard = count(Product::getProducts(3));
+$totalTshirt = count(Product::getProducts(4));
+$totalWheel = count(Product::getProducts(5));
 
 
-//-----------------------------------------------------------
-// REQUEST_METHOD POST 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!empty($_POST["regNum"])) {
-    }
-}
+
 
 
 ?>
-<?php ?>
+
 
 
 <!-- Admin HTML-->
@@ -86,17 +88,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 labels: ['Hoodie', 'Cap', 'Skateboard', 'Tshirt', 'Wheel'],
                 datasets: [{
                     label: 'Total product',
-                    data: [12, 16, 3, 5, 2],
-                    borderWidth: 1
+                    data: [<?= $totalHoodie ?>, <?= $totalCap ?>, <?= $totalSkateboard ?>, <?= $totalTshirt ?>, <?= $totalWheel ?>],
+                    borderWidth: 1,
+                    borderColor: '#36A2EB',
+                    backgroundColor: '#0d6efd',
                 }]
             },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
         });
     </script>
 </body>

@@ -20,12 +20,6 @@ require_once '../../functions/checkIsAdmin.php';
 $products = Product::getAllProducts();
 
 //-----------------------------------------------------------
-// Category
-// $nameCategory = Category::getCategory(2);
-// // echo $nameCategory;
-
-
-
 
 ?>
 
@@ -106,13 +100,6 @@ $products = Product::getAllProducts();
                             <?php }
                             } ?>
                             <?php ?>
-
-
-
-
-                            <!-- Not Found product -->
-                            <!-- <div class="alert alert-danger" role="alert"></div> -->
-
                         </tbody>
                     </table>
                 </div>
@@ -124,7 +111,7 @@ $products = Product::getAllProducts();
 
 
 
-    <!-- Toast HTML: The product created-->
+    <!-- Toast HTML: For product created-->
     <div class="toast-container  p-2 bottom-0 start-0" id="toastPlacement">
         <div class="toast text-bg-success " id="productCreated" data-bs-delay="2000">
             <div class="toast-header">
@@ -151,7 +138,6 @@ $products = Product::getAllProducts();
 
     <?php
     if (isset($_GET['created'])) echo '<script>new bootstrap.Toast(productCreated).show();</script>';
-
     ?>
 
 </body>

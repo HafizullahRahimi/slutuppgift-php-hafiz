@@ -34,6 +34,29 @@ class Order extends Connection
         $conn->close();
         return $order;
     }
+
+    // Get All Order
+    public static  function getAllOrders()
+    {
+        // Create connection
+        $conn = Connection::openConn();
+
+        $sql = "SELECT * FROM orders ORDER BY order_date DESC;";
+        $result = $conn->query($sql);
+        $OrderArr = array();
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                array_push($OrderArr, $row);
+            }
+        } else {
+            $OrderArr = array();;
+        }
+
+        $conn->close();
+        return $OrderArr;
+    }
     // Methods ---------------------------------------------
     // insert Order
     public static  function insetOrder($customerId)

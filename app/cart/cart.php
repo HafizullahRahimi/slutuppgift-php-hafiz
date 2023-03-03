@@ -55,13 +55,13 @@ if (isset($_SESSION['products'])) {
     <!-- Main Start -->
     <main>
         <div class="container mt-5 mb-5">
+            <!-- Products Card -->
             <div class="card">
                 <!-- card-header -->
                 <?php require_once 'layouts/card-header.php' ?>
-                <div class="card-body">
-                    <!-- <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
 
+                <!-- card-body  -->
+                <div class="card-body">
                     <div class="col-11 order-md-last">
                         <h4 class="d-flex justify-content-between align-items-center mb-3">
                             <span class="text-primary">Orders</span>
@@ -88,14 +88,6 @@ if (isset($_SESSION['products'])) {
                                 </div>
                             </li>
                             <?php }} ?>
-
-                            <!-- <li class="list-group-item d-flex justify-content-between bg-light">
-                                <div class="text-success">
-                                    <h6 class="my-0">Promo code</h6>
-                                    <small>EXAMPLECODE</small>
-                                </div>
-                                <span class="text-success">−$5</span>
-                            </li> -->
 
                             <!-- Total -->
                             <li class="list-group-item d-flex justify-content-between <?= (!isset($_SESSION['totalProducts']) || $_SESSION['totalProducts'] < 1)? 'd-none' : ''?> ">

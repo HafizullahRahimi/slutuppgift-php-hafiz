@@ -12,6 +12,9 @@ $current_page_name = basename($_SERVER['PHP_SELF'], '.php');
 session_start();
 
 //-----------------------------------------------------------
+require_once '../../functions/checkHaveOrder.php';
+
+//-----------------------------------------------------------
 // REQUEST_METHOD POST FORM
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Set SESSION for customer info

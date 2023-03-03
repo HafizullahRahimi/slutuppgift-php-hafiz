@@ -114,6 +114,7 @@ if (isset($_GET['category'])) {
                 <!-- Rows Product -->
                 <?php if (count($products) > 0) {
                     foreach ($products as $product) {
+                        if ($product['status'] ==1) {
                 ?>
                         <section class=" col-lg-3 col-md-4 col-sm-6 ">
                             <div class="card mx-2 my-3" style="height: 360px;">
@@ -135,7 +136,7 @@ if (isset($_GET['category'])) {
                         </section>
                     <?php
                     }
-                } else { ?>
+                } }else { ?>
                 <div class=" container d-flex justify-content-center align-items-center alert alert-warning" style="height: 400px;">
                     <p class="fs-3">Have Not</p>
                 </div>

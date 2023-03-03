@@ -34,6 +34,34 @@ class Customer extends Connection
         $conn->close();
         return $customer;
     }
+
+    // Get Customer info by Customer ID
+    public static  function getCustomerInfoByID($customerID)
+    {
+        // Create connection
+        $conn = Connection::openConn();
+
+        // prepare and bind
+        $stmt = $conn->prepare("SELECT * FROM `customers` WHERE customer_id = ?;");
+        //set parameters
+        $stmt->bind_param("s", $customerID);
+        // execute
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $customer = array();
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                $customer =  $row;
+                // dd($row);
+            }
+        }
+
+        $conn->close();
+        return $customer;
+    }
     // Methods ---------------------------------------------
     // insert Customer
     public static  function insetCustomer($firstName, $lastName, $email,    $phone,    $address, $city,    $postalCode)
