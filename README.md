@@ -26,6 +26,7 @@
 6. [x] Functions 
     - helpers.php
 7. [x] Layouts 
+8. [x] Upload 
 
 #### **Database connection:**
 - [ ] PDO
