@@ -32,20 +32,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $postalCode = $_SESSION['customerPostalCode'];
 
 
-    // // insert a new Customer
-    // $customerID = Customer::insetCustomer($firstName, $lastName, $email, $phone, $address, $city, $postalCode);
+    // insert a new Customer
+    $customerID = Customer::insetCustomer($firstName, $lastName, $email, $phone, $address, $city, $postalCode);
 
-    // // insert a new order
-    // $orderId = Order::insetOrder($customerID);
+    // insert a new order
+    $orderId = Order::insetOrder($customerID);
 
-    // // insert all products
-    // $products = $_SESSION['products'];
-    // if (count($products) > 0) {
-    //     foreach ($products as $product) {
-    //         // insert a new OrderDetail
-    //         OrderDetail::insetOrderDetail($orderId, $product["id"], $product["quantity"]);
-    //     }
-    // }
+    // insert all products
+    $products = $_SESSION['products'];
+    if (count($products) > 0) {
+        foreach ($products as $product) {
+            // insert a new OrderDetail
+            OrderDetail::insetOrderDetail($orderId, $product["id"], $product["quantity"]);
+        }
+    }
 
 
     $payIsSuccessful = true;

@@ -28,7 +28,8 @@ $updatedAlert = false;
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     (empty($_GET['created'])) ? $createdAlert  = false : $createdAlert  = true;
-    (empty($_GET['updated'])) ? $createdAlert  = false : $createdAlert  = true;
+    (empty($_GET['updated'])) ? $updatedAlert  = false : $updatedAlert  = true;
+
 }
 
 

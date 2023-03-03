@@ -24,7 +24,7 @@ $categories = Category::getAllCategory();
 
 //-----------------------------------------------------------
 if (isset($_POST['addProduct'])) {
-    echo 'AddED';
+    
     if (trim($_POST['title']) != ""  && trim($_POST['categoryId']) != "" && trim($_POST['body']) != "" && trim($_FILES['image']['name']) != "") {
 
         $title = $_POST['title'];
@@ -47,8 +47,11 @@ if (isset($_POST['addProduct'])) {
         if ($insertProduct) {
             echo 'inserted Product';
             redirect('admin/product/product.php?created=1');
+            
         }
 
+    }else{
+        echo 'inputs is empty';
     }
 }
 
