@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <!-- phone -->
                         <div class="col-md-5">
                             <label for="validationCustom07" class="form-label">phone</label>
-                            <input type="number" name="phone" class="form-control" id="validationCustom07" value="<?= (isset($_SESSION['customerPhone'])) ? $_SESSION['customerPhone'] : '' ?>" required />
+                            <input type="tel" name="phone" class="form-control" id="validationCustom07" value="<?= (isset($_SESSION['customerPhone'])) ? $_SESSION['customerPhone'] : '' ?>" required />
                             <div class="valid-feedback">Looks good!</div>
                             <div class="invalid-feedback">
                                 Please provide a valid phone.
