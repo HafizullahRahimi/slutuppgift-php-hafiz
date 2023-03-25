@@ -19,6 +19,10 @@
 - [x] JavaScript
 - [ ] SCSS
 
+#### **Database:**
+1. [x] prague_parking_sql
+
+
 #### **PHP Folders:**
 1. [x] App
 2. [x] Admin 
