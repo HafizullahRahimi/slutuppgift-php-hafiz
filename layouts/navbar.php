@@ -53,16 +53,16 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 <!-- User Menu -->
                 <div class="flex-shrink-0 dropdown me-4">
                     <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="<?= asset('assets\images\user.png'); ?>" alt="mdo" width="32" height="32" class="rounded-circle" />
+                        <img src="<?= asset('upload/users/user.png'); ?>" alt="mdo" width="32" height="32" class="rounded-circle" />
                         <?= $_SESSION["userName"] ?>
                     </a>
                     <ul class="dropdown-menu text-small">
-                        
+
                         <li>
-                            <a class="dropdown-item <?= ($_SESSION["userRole"] == 0) ? 'd-none' : ''?>" href="<?= asset('app/account/order.php') ?>">Order</a>
+                            <a class="dropdown-item <?= ($_SESSION["userRole"] == 0) ? 'd-none' : '' ?>" href="<?= asset('app/account/order.php') ?>">Order</a>
                         </li>
                         <li>
-                            <a class="dropdown-item text-success <?= ($_SESSION["userRole"] == 1) ? 'd-none' : ''?>" href="<?= asset('admin/index.php') ?>">Admin Panel </a>
+                            <a class="dropdown-item text-success <?= ($_SESSION["userRole"] == 1) ? 'd-none' : '' ?>" href="<?= asset('admin/index.php') ?>">Admin Panel </a>
                         </li>
 
                         <li>
@@ -92,12 +92,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 </a>
             </div>
             <!-- Cart -->
-            <div class="text-end me-5  <?= (isset($_SESSION["userRole"]) && $_SESSION["userRole"] == 0) ? 'd-none' : ''?>">
+            <div class="text-end me-5  <?= (isset($_SESSION["userRole"]) && $_SESSION["userRole"] == 0) ? 'd-none' : '' ?>">
                 <a class="btn position-relative <?= ($current_page_name == 'cart' ? 'btn-primary' : 'btn-outline-primary') ?>" href="<?= asset('/app/cart/cart.php') ?>">
                     Cart
                     <i class="fa-solid fa-cart-shopping "></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill  bg-primary <?= (!isset($_SESSION['totalProducts']) || $_SESSION['totalProducts'] < 1)? 'd-none' : ''?> ">
-                    <?= $_SESSION['totalProducts']?>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill  bg-primary <?= (!isset($_SESSION['totalProducts']) || $_SESSION['totalProducts'] < 1) ? 'd-none' : '' ?> ">
+                        <?= $_SESSION['totalProducts'] ?>
                     </span>
                 </a>
             </div>
