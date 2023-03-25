@@ -1,6 +1,7 @@
 # **Sinus web shop**
 
 ## **Version: 1.0.0**
+Om Slutuppgift kolla på Slutuppgift_PHP_Sinus_Skateboards_Webshop.PDF filen.
 
 
 #### **Materials :**
